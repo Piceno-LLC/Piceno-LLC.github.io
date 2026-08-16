@@ -323,11 +323,11 @@
      cursor: pointer;
 }
  .sliced_div{
-     border-top: 4px solid #69001E;
-     border-bottom: 4px solid #69001E;
+     border-top: 4px solid #d99f00;
+     border-bottom: 4px solid #d99f00;
 }
  .sliced_div_F{
-     border-bottom: 4px solid #69001E;
+     border-bottom: 4px solid #d99f00;
 }
  @media (max-width: 1200px) {
      .about_me{
