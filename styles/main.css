@@ -269,7 +269,6 @@
 }
  .Skills_H1{
      font-size: 20px;
-     color: rgb(255, 255, 255);
      text-decoration: none;
      word-break: break-all;
      overflow-wrap: break-word;
@@ -280,7 +279,6 @@
 }
  .Skills_H2{
      font-size: 18px;
-     color: rgb(255, 255, 255);
      text-decoration: none;
      word-break: break-all;
      overflow-wrap: break-word;
@@ -291,12 +289,10 @@
 }
  .Skills_H2_L{
      font-size: 18px;
-     color: rgb(255, 255, 255);
      float: left;
 }
  .Skills_H2_R{
      font-size: 18px;
-     color: rgb(255, 255, 255);
      float: right;
 }
  .Project_Button_Style{
