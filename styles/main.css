@@ -273,8 +273,6 @@
      word-break: break-all;
      overflow-wrap: break-word;
      overflow-wrap: break-word;
-     max-width: 100%;
-     box-sizing: border-box;
      overflow: hidden;
 }
  .Skills_H2{
@@ -283,17 +281,17 @@
      word-break: break-all;
      overflow-wrap: break-word;
      overflow-wrap: break-word;
-     max-width: 100%;
-     box-sizing: border-box;
      overflow: hidden;
 }
  .Skills_H2_L{
      font-size: 18px;
      float: left;
+     color: rgb(0, 0, 0);
 }
  .Skills_H2_R{
      font-size: 18px;
      float: right;
+     color: rgb(0, 0, 0);
 }
  .Project_Button_Style{
      border-radius: 50%;
@@ -410,7 +408,6 @@
     }
 }
  .Skill_Style{
-     color: rgb(0, 0, 0);
      background-color: rgb(217, 159, 0);
      border: 1px solid rgb(92, 67, 0);
      margin-bottom: 5px;
