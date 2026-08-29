@@ -2,7 +2,7 @@
      touch-action: manipulation;
 }
  ::selection {
-     background: rgba(255, 232, 0, 0.67);
+     background: rgba(255, 232, 0, 0.322);
 }
  body {
      background-color: rgb(0, 0, 0);
