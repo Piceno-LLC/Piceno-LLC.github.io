@@ -414,8 +414,9 @@
     }
 }
  .Skill_Style{
-     background-color: #69001E;
-     border: 1px solid rgb(166, 166, 166);
+     color: rgb(0, 0, 0);
+     background-color: rgb(217, 159, 0);
+     border: 1px solid rgb(92, 67, 0);
      margin-bottom: 5px;
 }
 /* The typing effect */
