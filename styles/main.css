@@ -272,14 +272,14 @@
      text-decoration: none;
      word-break: break-all;
      overflow-wrap: break-word;
-     overflow: hidden;
+     color: rgb(255, 255, 255);
 }
  .Skills_H2{
      font-size: 18px;
      text-decoration: none;
      word-break: break-all;
      overflow-wrap: break-word;
-     overflow: hidden;
+     color: rgb(255, 255, 255);
 }
  .Skills_H2_L{
      font-size: 18px;
