@@ -13,6 +13,7 @@
      flex-direction: column;
      justify-content: center;
      align-items: center;
+     color: rgb(255, 255, 255);
      margin: 0;
      padding: 0;
 }
@@ -158,12 +159,9 @@
      text-align: center;
      display: flex;
      flex-direction: column;
-    /* Stacks elements vertically */
      align-items: center;
-    /* Aligns text vertically */
      justify-content: center;
      align-content: center;
-    /* Modern CSS: Vertically centers block elements */
      flex-wrap: wrap;
      font-family: Calibri, Candara, Segoe, Optima, Arial, sans-serif;
      width: 50%;
