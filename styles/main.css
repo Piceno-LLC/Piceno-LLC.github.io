@@ -17,6 +17,14 @@
      margin: 0;
      padding: 0;
 }
+.Central_Background{
+     position: fixed; 
+     z-index: -1; 
+     top: 0; 
+     background-color: rgba(0, 0, 0, .3); 
+     width: 50vw; 
+     height: 100vh;
+}
 .Blog{
      font-size: 14px;
      width: 100%;
@@ -357,6 +365,9 @@
      border-bottom: 4px solid #d99f00;
 }
  @media (max-width: 1200px) {
+      .Central_Background{
+           width: 100vw;
+      }
      .about_me{
          font-size: 14px;
     }
