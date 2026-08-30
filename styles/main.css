@@ -16,6 +16,13 @@
      margin: 0;
      padding: 0;
 }
+.Blog{
+     font-size: 14px;
+     width: 100%;
+     display: block;
+     text-align: center;
+     margin: auto;
+}
  .Button_Projects_Container{
      display: flex;
      gap: 30px;
@@ -175,6 +182,26 @@
      border-bottom: 4px solid #d99f00;
      margin-bottom: 5px;
 }
+.Header_1{
+     font-size: 18px;
+     color: rgb(255, 255, 255);
+     font-weight: normal;
+}
+ .Header_2{
+     font-size: 14px;
+     color: rgb(255, 255, 255);
+     font-weight: normal;
+}
+ .Paragraph{
+     text-align: left;
+     color: rgb(255, 255, 255);
+}
+.Paragraph_Image{
+     width: 350px;
+     height: 200px;
+     cursor: pointer;
+     -webkit-user-drag: none;
+}
  .General_Header_1{
      font-size: 20px;
      color: rgb(255, 255, 255);
@@ -316,6 +343,14 @@
      float: none;
      cursor: pointer;
 }
+.Sliced_Div{
+     border-top: 4px solid #d99f00;
+     border-bottom: 4px solid #d99f00;
+}
+ .PDF_Embed{
+     width: 100%;
+     height: 800px;
+}
  .sliced_div{
      border-top: 4px solid #d99f00;
      border-bottom: 4px solid #d99f00;
@@ -326,6 +361,14 @@
  @media (max-width: 1200px) {
      .about_me{
          font-size: 14px;
+    }
+      .Blog{
+         font-size: 14px;
+         width: 100%;
+    }
+      .PDF_Embed{
+         width: 95%;
+         height: 600px;
     }
      .Button_Projects_Container{
          display: flex;
