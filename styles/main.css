@@ -388,10 +388,12 @@
      .Skills_H2_L{
          font-size: 12px;
          float: left;
+          font-weight: bold;
     }
      .Skills_H2_R{
          font-size: 12px;
          float: right;
+         font-weight: bold;
     }
      .container{
          width: 100%;
