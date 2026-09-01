@@ -24,6 +24,8 @@
      background-color: rgba(16, 16, 0, 1); 
      width: 80vw; 
      height: 100dvh;
+     border-left: 4px solid #d99f00;
+     border-right: 4px solid #d99f00;
 }
 .Blog{
      font-size: 14px;
