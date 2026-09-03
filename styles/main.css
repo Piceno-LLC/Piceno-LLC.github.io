@@ -494,7 +494,7 @@
      width: 150%;
     /* Oversized to ensure corners are fully covered while rotating */
      height: 150%;
-     background: conic-gradient( #f5e042, #f5e042, #f5a142, #f5a142 );
+     background: conic-gradient( #FFCC00, #FFCC00, #f5a142, #f5a142 );
      animation: rotateGlow 4s linear infinite;
      z-index: 1;
 }
