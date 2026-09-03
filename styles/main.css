@@ -272,7 +272,7 @@
      width: 150px;
      height: 150px;
      -webkit-user-drag: none;
-     border-top: 4px solid #FFCC00;
+     border: 4px solid #FFCC00;
 }
  .Body_Logo{
      cursor: pointer;
