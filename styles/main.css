@@ -46,9 +46,9 @@
      margin-top: 10px;
 }
  .Button_Projects{
-     color: #ffffff;
-     background-color: rgba(119, 20, 20, 0);
-     border-color: #fff000;
+     color: #000000;
+     background-color: #FFCC00;
+     border-color: #FFCC00;
      outline: none;
      cursor: pointer;
      border-radius: 2px;
@@ -93,7 +93,7 @@
      font-weight: bold;
      width: 250px; 
      height: 35px; 
-     background-color: rgb(217, 159, 0);
+     background-color: #FFCC00;
 }
  .Badges{
      padding-right: 0%;
@@ -360,11 +360,11 @@
      height: 800px;
 }
  .sliced_div{
-     border-top: 4px solid #d99f00;
-     border-bottom: 4px solid #d99f00;
+     border-top: 4px solid #FFCC00;
+     border-bottom: 4px solid #FFCC00;
 }
  .sliced_div_F{
-     border-bottom: 4px solid #d99f00;
+     border-bottom: 4px solid #FFCC00;
 }
  @media (max-width: 1200px) {
       .Central_Background{
@@ -454,7 +454,7 @@
     }
 }
  .Skill_Style{
-     background-color: rgb(217, 159, 0);
+     background-color: #FFCC00;
      border: 1px solid rgb(92, 67, 0);
      margin-bottom: 5px;
 }
