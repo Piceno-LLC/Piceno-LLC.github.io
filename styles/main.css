@@ -16,7 +16,6 @@
      color: rgb(255, 255, 255);
      margin: 0;
      padding: 0;
-     height: calc(100vh + 45px);
      min-height: calc(100vh + 45px);
 }
 .Central_Background{
