@@ -351,6 +351,7 @@
  .Top_Header{
      background-color: rgba(0, 0, 0, 1);
      width: 100%;
+     height: 45px;
 }
  .top_header_logo{
      -webkit-user-drag: none;
