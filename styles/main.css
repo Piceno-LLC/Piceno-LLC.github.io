@@ -375,6 +375,12 @@
  .sliced_div_F{
      border-bottom: 4px solid #FFCC00;
 }
+.Complete{
+     color: rgb(0, 207, 21);
+}
+.In_Progress{
+     color: rgb(232, 148, 2);
+}
  @media (max-width: 1200px) {
       .Central_Background{
            width: 100vw;
