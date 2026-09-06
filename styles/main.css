@@ -13,7 +13,8 @@
      flex-direction: column;
      justify-content: center;
      align-items: center;
-     font-family: Arial, Helvetica, Calibri, Candara, Segoe, Optima, sans-serif;
+     /*font-family: Arial, Helvetica*/
+     font-family: Calibri, Candara, Segoe, Optima, sans-serif;
      color: rgb(255, 255, 255);
      margin: 0;
      padding: 0;
