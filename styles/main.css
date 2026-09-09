@@ -118,7 +118,6 @@ Footer + Header = 90px total (Dynamically loaded).
      height: 100%;
      align-items: center; 
      justify-content: center;
-     flex-direction: column;
      gap: 0 10px;
 }
  .landing_logo{
@@ -391,10 +390,12 @@ Footer + Header = 90px total (Dynamically loaded).
 }
 .Footer_Links{
      list-style: none;
-     line-height: 25px;
-     flex-direction: column;
-     justify-content: flex-end;
+     flex-direction: row;
      flex-wrap: wrap;
+     display: flex;
+     margin: 0;
+     gap: 20px;
+     padding: 0;
 }
 .Footer_Link{
      color: rgb(74, 155, 255);
