@@ -362,7 +362,7 @@ Footer + Header = 90px total (Dynamically loaded).
      display: flex;
      justify-content: center;
      height: 45px;
-     font-size: 18px;
+     font-size: 14px;
 }
 .Footer_Filler{
      width: 100%; 
