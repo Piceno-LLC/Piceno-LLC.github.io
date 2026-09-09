@@ -389,6 +389,7 @@
      line-height: 25px;
      flex-direction: column;
      justify-content: flex-end;
+     flex-wrap: wrap;
 }
 .Footer_Link{
      color: rgb(74, 155, 255);
