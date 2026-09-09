@@ -412,6 +412,7 @@ Footer + Header = 90px total (Dynamically loaded).
      cursor: pointer;
      text-align: right;
      padding-left: 2rem;
+     text-decoration: none;
 }
 
  @media (max-width: 1200px) {
