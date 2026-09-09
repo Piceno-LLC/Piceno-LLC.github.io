@@ -114,7 +114,8 @@
      height: 100%; 
      align-items: center; 
      justify-content: center;
-     flex-direction: row;
+     flex-direction: column;
+     gap: 0 24px;
 }
  .landing_logo{
      vertical-align: center;
