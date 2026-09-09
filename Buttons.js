@@ -68,7 +68,7 @@ function innerPage(pageName) {
     }
 }
 
-// Insert footer
+// Insert Footer
 function footer_insert() {
     // Check Page; Insert HTML data if page exists
     const div_ID = "Footer_Insert";
@@ -86,6 +86,26 @@ function footer_insert() {
         console.log("Did not fetch: " + div_ID);
     }
 }
+
+// Insert Header
+function header_insert() {
+    // Check Page; Insert HTML data if page exists
+    const div_ID = "Header_Insert";
+    if (document.getElementById(div_ID) !== null) {
+        let careerTextArea = document.getElementById(div_ID);
+        fetch("./content/insert/header/index.html")
+        .then(response => response.text())
+        .then(html => {
+            careerTextArea.innerHTML = html;
+        })
+        .catch(error => {
+            console.error("Error loading page:", error);
+        });
+    } else {
+        console.log("Did not fetch: " + div_ID);
+    }
+}
+
 
 //Handle Menu Buttons' Inputs 
 function myFunction(typ3) {
@@ -153,6 +173,7 @@ function myFunctionTopClose(typ3) {
 // Run Functions
 document.addEventListener('DOMContentLoaded', function() {
     //innerPage("Calendar");
+    header_insert();
     footer_insert();
     innerPage("PDF-Dark-Mode");
 });
