@@ -387,6 +387,7 @@
 .Footer_Links{
      list-style: none;
      line-height: 25px;
+     flex-direction: column;
 }
 .Footer_Link{
      color: rgb(74, 155, 255);
