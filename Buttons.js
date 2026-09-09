@@ -8,6 +8,9 @@ var previous_ID = null;
 var previous_ID_Project = null;
 var previous_pic_elemID = null;
 
+// Edit scroll history:
+window.history.scrollRestoration = 'manual';
+
 // Picture of the Day Prompt
 function picOfDay(elemID, description, date, url, picNumber) {
 
@@ -170,12 +173,18 @@ function myFunctionTopClose(typ3) {
     }
 }
 
+// Scroll to top after loading content.
+function scroll_to_top{
+    window.scrollTo(0, 0)
+}
+
 // Run Functions
 document.addEventListener('DOMContentLoaded', function() {
     //innerPage("Calendar");
     header_insert();
     footer_insert();
     innerPage("PDF-Dark-Mode");
+    scroll_to_top();
 });
 
 // Dark Mode App:
