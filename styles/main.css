@@ -411,6 +411,7 @@ Footer + Header = 90px total (Dynamically loaded).
      color: rgb(74, 155, 255);
      cursor: pointer;
      text-align: right;
+     padding-left: 2rem;
 }
 
  @media (max-width: 1200px) {
