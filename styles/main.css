@@ -118,7 +118,6 @@ Footer + Header = 90px total (Dynamically loaded).
      height: 100%;
      align-items: center; 
      justify-content: center;
-     gap: 0 10px;
      width: 80vw;
 }
 .Footer_div_column{
@@ -397,7 +396,6 @@ Footer + Header = 90px total (Dynamically loaded).
      text-dectoration: none;
 }
 .Footer_Links{
-     list-style: none;
      flex-direction: row;
      flex-wrap: wrap;
      display: flex;
