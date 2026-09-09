@@ -380,6 +380,11 @@
 }
 .Download_Link{
      color: rgb(74, 155, 255);
+     cursor: pointer;
+}
+.Footer_Link{
+     color: rgb(74, 155, 255);
+     cursor: pointer;
 }
  @media (max-width: 1200px) {
       .Central_Background{
