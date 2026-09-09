@@ -40,7 +40,7 @@ Footer + Header = 90px total (Dynamically loaded).
      width: 100%;
      display: block;
      text-align: center;
-     margin: auto;
+     margin: ;
 }
  .Button_Projects_Container{
      display: flex;
@@ -355,7 +355,7 @@ Footer + Header = 90px total (Dynamically loaded).
 .Bottom_Footer{
      background-color: rgb(0, 0, 0); 
      width: 100%; 
-     height: calc-size(auto, size + 5px);
+     height: 45px;
 }
 .Footer_Filler{
      width: 100%; 
