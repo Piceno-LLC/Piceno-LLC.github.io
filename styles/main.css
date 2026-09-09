@@ -119,6 +119,7 @@ Footer + Header = 90px total (Dynamically loaded).
      align-items: center; 
      justify-content: center;
      width: 80vw;
+     flex-direction: column;
 }
 .Footer_div_column{
      flex: 0 0 50%;
@@ -417,7 +418,7 @@ Footer + Header = 90px total (Dynamically loaded).
 
  @media (max-width: 1200px) {
       .Footer_Link{
-           padding-left: 1rem;
+           padding-left: .6rem;
       }
       .Central_Background{
            width: 100vw;
