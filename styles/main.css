@@ -351,7 +351,7 @@
 .Bottom_Footer{
      background-color: rgb(0, 0, 0); 
      width: 100%; 
-     height: calc-size(auto, size + 45px);
+     height: calc-size(auto, size + 5px);
 }
 .Footer_Filler{
      width: 100%; 
