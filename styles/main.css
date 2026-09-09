@@ -121,6 +121,10 @@ Footer + Header = 90px total (Dynamically loaded).
      gap: 0 10px;
      width: 80vw;
 }
+.Footer_div_column{
+     flex: 0 0 50%;
+     max-width: 50%;
+}
  .landing_logo{
      vertical-align: center;
      -webkit-user-drag: none;
