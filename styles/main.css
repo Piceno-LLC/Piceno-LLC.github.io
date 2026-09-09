@@ -1,3 +1,7 @@
+/*
+Dimensions: 
+Footer + Header = 90px total (Dynamically loaded).
+*/
 * {
      touch-action: manipulation;
 }
