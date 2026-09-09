@@ -419,6 +419,9 @@ Footer + Header = 90px total (Dynamically loaded).
       .Footer_Link{
            padding-left: .6rem;
       }
+      .Bottom_Footer{
+           font-size: 11px;
+      }
       .Footer_div_column {
            max-width: 100%;
       }
