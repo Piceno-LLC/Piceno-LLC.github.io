@@ -384,6 +384,9 @@
      color: rgb(74, 155, 255);
      cursor: pointer;
 }
+.Footer_List{
+     list-style: none;
+}
 .Footer_Link{
      color: rgb(74, 155, 255);
      cursor: pointer;
