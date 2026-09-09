@@ -68,7 +68,7 @@ function innerPage(pageName) {
     }
 }
 
-// Insert Subpages
+// Insert footer
 function footer_insert() {
     // Check Page; Insert HTML data if page exists
     const div_ID = "Footer_Insert";
@@ -153,6 +153,7 @@ function myFunctionTopClose(typ3) {
 // Run Functions
 document.addEventListener('DOMContentLoaded', function() {
     //innerPage("Calendar");
+    footer_insert();
     innerPage("PDF-Dark-Mode");
 });
 
