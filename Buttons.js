@@ -174,7 +174,7 @@ function myFunctionTopClose(typ3) {
 }
 
 // Scroll to top after loading content.
-function scroll_to_top{
+function scroll_to_top(){
     window.scrollTo(0, 0)
 }
 
