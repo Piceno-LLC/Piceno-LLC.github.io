@@ -74,7 +74,7 @@ function footer_insert() {
     const div_ID = "Footer_Insert";
     if (document.getElementById(div_ID) !== null) {
         let careerTextArea = document.getElementById(div_ID);
-        fetch("./content/insert/footer/index.html")
+        fetch("https://www.piceno.dev/content/insert/footer/index.html")
         .then(response => response.text())
         .then(html => {
             careerTextArea.innerHTML = html;
@@ -93,7 +93,7 @@ function header_insert() {
     const div_ID = "Header_Insert";
     if (document.getElementById(div_ID) !== null) {
         let careerTextArea = document.getElementById(div_ID);
-        fetch("./content/insert/header/index.html")
+        fetch("https://www.piceno.dev/content/insert/header/index.html")
         .then(response => response.text())
         .then(html => {
             careerTextArea.innerHTML = html;
