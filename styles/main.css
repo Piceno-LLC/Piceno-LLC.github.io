@@ -19,6 +19,7 @@
      margin: 0;
      padding: 0;
      min-height: calc(100vh + 45px);
+     text-decoration: none;
 }
 .Central_Background{
      position: fixed; 
@@ -178,7 +179,6 @@
  .SubHeader{
      font-size: 24px;
      color: rgb(255, 255, 255);
-     text-decoration: none;
      font-weight: normal;
      border-bottom: 4px solid #FFCC00;
      margin-bottom: 5px;
@@ -206,7 +206,6 @@
  .General_Header_1{
      font-size: 20px;
      color: rgb(255, 255, 255);
-     text-decoration: none;
      font-weight: normal;
      /*word-break: break-all;*/
      overflow-wrap: break-word;
@@ -217,7 +216,6 @@
  .General_Header_2{
      font-size: 16px;
      color: rgb(255, 255, 255);
-     text-decoration: none;
      font-weight: normal;
      /*word-break: break-all;*/
      overflow-wrap: break-word;
@@ -229,14 +227,12 @@
  .General_Header_1_L{
      font-size: 20px;
      color: rgb(255, 255, 255);
-     text-decoration: none;
      font-weight: normal;
      text-align: left;
 }
  .General_Header_2_L{
      font-size: 16px;
      color: rgb(255, 255, 255);
-     text-decoration: none;
      font-weight: normal;
      text-align: left;
 }
@@ -304,14 +300,12 @@
 }
  .Skills_H1{
      font-size: 20px;
-     text-decoration: none;
      word-break: break-all;
      overflow-wrap: break-word;
      color: rgb(255, 255, 255);
 }
  .Skills_H2{
      font-size: 18px;
-     text-decoration: none;
      word-break: break-all;
      overflow-wrap: break-word;
      color: rgb(255, 255, 255);
