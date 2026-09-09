@@ -407,6 +407,12 @@ Footer + Header = 90px total (Dynamically loaded).
      text-align: left;
      margin: 0;
 }
+.Footer_Link_Starter{
+     color: rgb(74, 155, 255);
+     cursor: pointer;
+     text-align: right;
+     text-decoration: none;
+}
 .Footer_Link{
      color: rgb(74, 155, 255);
      cursor: pointer;
