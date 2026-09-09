@@ -411,13 +411,16 @@ Footer + Header = 90px total (Dynamically loaded).
      color: rgb(74, 155, 255);
      cursor: pointer;
      text-align: right;
-     padding-left: 2rem;
+     padding-left: 1rem;
      text-decoration: none;
 }
 
  @media (max-width: 1200px) {
       .Footer_Link{
            padding-left: .6rem;
+      }
+      .Footer_div_column {
+           max-width: 100%;
       }
       .Central_Background{
            width: 100vw;
