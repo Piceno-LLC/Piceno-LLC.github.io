@@ -68,6 +68,25 @@ function innerPage(pageName) {
     }
 }
 
+// Insert Subpages
+function footer_insert() {
+    // Check Page; Insert HTML data if page exists
+    const div_ID = "Footer_Insert";
+    if (document.getElementById(div_ID) !== null) {
+        let careerTextArea = document.getElementById(div_ID);
+        fetch("./content/insert/footer/index.html")
+        .then(response => response.text())
+        .then(html => {
+            careerTextArea.innerHTML = html;
+        })
+        .catch(error => {
+            console.error("Error loading page:", error);
+        });
+    } else {
+        console.log("Did not fetch: " + div_ID);
+    }
+}
+
 //Handle Menu Buttons' Inputs 
 function myFunction(typ3) {
 
