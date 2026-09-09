@@ -430,6 +430,7 @@ Footer + Header = 90px total (Dynamically loaded).
       }
       .Footer_div_column {
            max-width: 100%;
+           flex: 0 0 0%;
       }
       .Central_Background{
            width: 100vw;
