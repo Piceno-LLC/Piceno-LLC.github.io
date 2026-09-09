@@ -394,7 +394,7 @@ Footer + Header = 90px total (Dynamically loaded).
 .Download_Link{
      color: rgb(74, 155, 255);
      cursor: pointer;
-     text-dectoration: none;
+     text-decoration: none;
 }
 .Footer_Links{
      flex-direction: row;
