@@ -387,6 +387,8 @@
 .Footer_Link{
      color: rgb(74, 155, 255);
      cursor: pointer;
+     display: list-item;
+     unicode-bidi: isolate;
 }
  @media (max-width: 1200px) {
       .Central_Background{
