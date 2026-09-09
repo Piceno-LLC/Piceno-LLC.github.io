@@ -355,6 +355,8 @@ Footer + Header = 90px total (Dynamically loaded).
 .Bottom_Footer{
      background-color: rgb(0, 0, 0); 
      width: 100%; 
+     display: flex;
+     justify-content: center;
      height: 45px;
      font-size: 12px;
 }
