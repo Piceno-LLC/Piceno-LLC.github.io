@@ -119,7 +119,6 @@ Footer + Header = 90px total (Dynamically loaded).
      align-items: center; 
      justify-content: center;
      width: 80vw;
-     flex-direction: column;
 }
 .Footer_div_column{
      flex: 0 0 50%;
@@ -425,6 +424,7 @@ Footer + Header = 90px total (Dynamically loaded).
       }
       .Footer_div{
            width: 90vw;
+           flex-direction: column;
       }
      .about_me{
          font-size: 14px;
