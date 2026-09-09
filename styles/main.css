@@ -123,6 +123,7 @@ Footer + Header = 90px total (Dynamically loaded).
 .Footer_div_column{
      flex: 0 0 50%;
      max-width: 50%;
+     text-align: right;
 }
  .landing_logo{
      vertical-align: center;
@@ -361,7 +362,7 @@ Footer + Header = 90px total (Dynamically loaded).
      display: flex;
      justify-content: center;
      height: 45px;
-     font-size: 12px;
+     font-size: 18px;
 }
 .Footer_Filler{
      width: 100%; 
@@ -404,6 +405,7 @@ Footer + Header = 90px total (Dynamically loaded).
 }
 .Footer_Copyright_Text{
      text-align: left;
+     margin: 0;
 }
 .Footer_Link{
      color: rgb(74, 155, 255);
