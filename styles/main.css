@@ -119,6 +119,7 @@ Footer + Header = 90px total (Dynamically loaded).
      align-items: center; 
      justify-content: center;
      gap: 0 10px;
+     width: 80vw;
 }
  .landing_logo{
      vertical-align: center;
@@ -404,8 +405,12 @@ Footer + Header = 90px total (Dynamically loaded).
      display: list-item;
      unicode-bidi: isolate;
 }
+
  @media (max-width: 1200px) {
       .Central_Background{
+           width: 100vw;
+      }
+      .Footer_div{
            width: 100vw;
       }
      .about_me{
