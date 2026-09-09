@@ -400,14 +400,15 @@ Footer + Header = 90px total (Dynamically loaded).
      flex-wrap: wrap;
      display: flex;
      margin: 0;
-     gap: 20px;
      padding: 0;
+}
+.Footer_Copyright_Text{
+     text-align: left;
 }
 .Footer_Link{
      color: rgb(74, 155, 255);
      cursor: pointer;
-     display: list-item;
-     unicode-bidi: isolate;
+     text-align: right;
 }
 
  @media (max-width: 1200px) {
