@@ -3,6 +3,9 @@
 // Date: 02/20/2023
 // Last Modified: 08/8/2026 
 
+//Context Menu Disable:
+document.oncontextmenu = function () { return false; }
+
 // Attributes
 var previous_ID = null;
 var previous_ID_Project = null;
