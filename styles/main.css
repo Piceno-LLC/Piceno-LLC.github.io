@@ -47,7 +47,17 @@ Footer + Header = 90px total (Dynamically loaded).
      gap: 30px;
      flex-direction: row;
      align-items: center;
-    /* Aligns text vertically */
+     justify-content: center;
+     flex-wrap: wrap;
+     text-align: center;
+     margin-top: 10px;
+     margin-bottom: 15px;
+}
+.Button_Projects_Container_SubPage{
+     display: flex;
+     gap: 30px;
+     flex-direction: row;
+     align-items: center;
      justify-content: center;
      flex-wrap: wrap;
      text-align: center;
