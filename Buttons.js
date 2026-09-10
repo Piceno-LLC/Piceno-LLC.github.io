@@ -113,12 +113,31 @@ function header_insert() {
 }
 
 // Insert SubPage Buttons
-function header_insert() {
+function subpage_buttons_insert() {
     // Check Page; Insert HTML data if page exists
     const div_ID = "Button_Projects_Container_SubPage";
     if (document.getElementById(div_ID) !== null) {
         let careerTextArea = document.getElementById(div_ID);
         fetch("https://www.piceno.dev/content/insert/subpage-buttons/index.html")
+        .then(response => response.text())
+        .then(html => {
+            careerTextArea.innerHTML = html;
+        })
+        .catch(error => {
+            console.error("Error loading page:", error);
+        });
+    } else {
+        console.log("Did not fetch: " + div_ID);
+    }
+}
+
+// Insert SubPage Buttons for Individual
+function subpage_buttons_insert_individual() {
+    // Check Page; Insert HTML data if page exists
+    const div_ID = "Button_Projects_Container_SubPage_Mario";
+    if (document.getElementById(div_ID) !== null) {
+        let careerTextArea = document.getElementById(div_ID);
+        fetch("https://www.piceno.dev/content/insert/subpage-buttons-mario/index.html")
         .then(response => response.text())
         .then(html => {
             careerTextArea.innerHTML = html;
@@ -205,7 +224,8 @@ document.addEventListener('DOMContentLoaded', function() {
     header_insert();
     footer_insert();
     subpage_buttons_insert();
-    innerPage("PDF-Dark-Mode");
+    subpage_buttons_insert_individual();
+    //innerPage("PDF-Dark-Mode");
     scroll_to_top();
 });
 
