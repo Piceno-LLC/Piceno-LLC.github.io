@@ -426,97 +426,78 @@ async function handleFileUploadClick() {
         // ignore errors
     }
 }
-// Render PDF
+
+
+// Render PDF to canvas without modifying colors or saving a file
 async function renderPDF_Downloadless(pdfData, divName) {
     const renderId = ++currentRenderId;
-    const selectedTheme = 'forest';
-    const theme = themes[selectedTheme];
 
-    const pdf = await pdfjsLib.getDocument({ data: pdfData }).promise;
+    try {
+        // Load PDF with PDF.js
+        const pdf = await pdfjsLib.getDocument({ data: pdfData }).promise;
 
-    const pdfContainer = document.getElementById(divName);
+        // Find the container
+        const pdfContainer = document.getElementById(divName);
 
-    modifiedPdfBytes = null;
-    pdfContainer.innerHTML = '';
+        if (!pdfContainer) {
+            console.error("PDF container not found:", divName);
+            return;
+        }
 
-    const CHUNK_SIZE = 50; // optional chunking for memory management
-    const totalPages = pdf.numPages;
-    const chunks = [];
+        // Clear previous pages
+        pdfContainer.innerHTML = '';
 
-    for (let chunkStart = 0; chunkStart < totalPages; chunkStart += CHUNK_SIZE) {
-        if (renderId !== currentRenderId) return;
+        const totalPages = pdf.numPages;
 
-        const chunkDoc = await PDFLib.PDFDocument.create();
-        const chunkEnd = Math.min(chunkStart + CHUNK_SIZE, totalPages);
+        // Render each page
+        for (let i = 0; i < totalPages; i++) {
 
-        for (let i = chunkStart; i < chunkEnd; i++) {
-            if (renderId !== currentRenderId) return;
+            // Stop if another render has started
+            if (renderId !== currentRenderId) {
+                return;
+            }
 
+            // Get PDF page
             const page = await pdf.getPage(i + 1);
+
+            // Render resolution
             const scale = window.devicePixelRatio > 1 ? 2 : 1.5;
             const viewport = page.getViewport({ scale });
+
+            // Create canvas
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
 
             canvas.width = viewport.width;
             canvas.height = viewport.height;
+
+            // Canvas styling
             canvas.style.border = "1px solid white";
             canvas.style.marginTop = "10px";
+            canvas.style.maxWidth = "100%";
+            canvas.style.height = "auto";
+            canvas.style.display = "block";
+            canvas.style.marginLeft = "auto";
+            canvas.style.marginRight = "auto";
 
-            await page.render({ canvasContext: ctx, viewport }).promise;
-
-            // Apply dark mode pixel-wise to all pages
-            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            /*
-            const data = imageData.data;
-            const bgR = theme.r;
-            const bgG = theme.g;
-            const bgB = theme.b;
-
-            for (let j = 0; j < data.length; j += 4) {
-                const r = data[j];
-                const g = data[j + 1];
-                const b = data[j + 2];
-                const brightness = 0.299 * r + 0.587 * g + 0.114 * b;
-                const factor = 1 - (brightness / 255);
-
-                data[j]     = bgR + (255 - bgR) * factor;
-                data[j + 1] = bgG + (255 - bgG) * factor;
-                data[j + 2] = bgB + (255 - bgB) * factor;
-            }
-            ctx.putImageData(imageData, 0, 0);
-            */
-            ctx.putImageData(imageData, 0, 0);
-            // Append **all pages** to DOM
-            canvas.style.maxWidth = '100%';
-            canvas.style.height = 'auto';
+            // Add canvas to container
             pdfContainer.appendChild(canvas);
 
-            // Convert canvas to PNG for PDF
-            const imgBytes = await new Promise(resolve =>
-                canvas.toBlob(blob => blob.arrayBuffer().then(resolve), 'image/png')
-            );
+            // Render PDF page directly to canvas
+            await page.render({
+                canvasContext: ctx,
+                viewport: viewport
+            }).promise;
 
-            const jpgImage = await chunkDoc.embedPng(imgBytes);
-            const newPage = chunkDoc.addPage([viewport.width, viewport.height]);
-            newPage.drawImage(jpgImage, {
-                x: 0,
-                y: 0,
-                width: viewport.width,
-                height: viewport.height
-            });
-
+            // Clean up PDF.js page resources
             page.cleanup();
-
-            // Update progress
-            const percent = ((i + 1) / totalPages) * 100;
         }
 
-        const chunkBytes = await chunkDoc.save();
-        chunks.push(chunkBytes);
-    }
+        console.log(`Rendered ${totalPages} PDF page(s) to canvas.`);
 
-    if (renderId !== currentRenderId) return;
+    } catch (error) {
+        console.error("Error rendering PDF:", error);
+    }
 }
 
 // Render PDF
