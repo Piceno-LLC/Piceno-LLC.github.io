@@ -355,7 +355,7 @@ Footer + Header = 90px total (Dynamically loaded).
      -webkit-user-drag: none;
 }
  .Sub_Head_Page{
-     display: none;
+     display: flex;
      width: 100%;
      justify-content: center;
      flex-direction: column;
