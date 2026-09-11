@@ -14,80 +14,6 @@ var previous_pic_elemID = null;
 // Edit scroll history:
 window.history.scrollRestoration = 'manual';
 
-/* 
-PDF Viewer - Legacy//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// 1. Get the library instance (assuming it is imported or loaded via script tag)
-const pdfjsLib = window['pdfjsLib'];
-
-// 2. IMPORTANT: Define the worker path so PDF parsing happens in a background thread
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://www.piceno.dev/PDF_JS_Legacy/build/pdf.worker.min.js';
-
-const pdfUrl = 'https://www.piceno.dev/mario/Documents/BLS_card.pdf';
-const container = document.getElementById('pdf-container');
-
-// 3. Load the document
-pdfjsLib.getDocument(pdfUrl).promise.then((pdfDocument) => {
-  console.log(`PDF loaded. Total pages: ${pdfDocument.numPages}`);
-  
-  // Render the first page as an example
-  renderPage(1, pdfDocument);
-}).catch((error) => {
-  console.error('Error loading PDF: ', error);
-});
-
-// 4. Render helper function
-function renderPage(pageNumber, pdfDocument) {
-  pdfDocument.getPage(pageNumber).then((page) => {
-    const scale = 1.5; // Adjust zoom scale as needed
-    const viewport = page.getViewport({ scale: scale });
-
-    // Create a new canvas element dynamically for the page
-    const canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
-    canvas.height = viewport.height;
-    canvas.width = viewport.width;
-
-    // Append to container
-    container.appendChild(canvas);
-
-    // Prepare rendering context
-    const renderContext = {
-      canvasContext: context,
-      viewport: viewport
-    };
-
-    // Draw the visual contents onto the canvas
-    page.render(renderContext).promise.then(() => {
-      console.log(`Page ${pageNumber} successfully rendered.`);
-    });
-  });
-}
-*/
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-function renderPDF_Subpage(docPath, insertLocation) {
-  // 1. Point the library to the global worker script you loaded
-  pdfjsLib.GlobalWorkerOptions.workerSrc = '/PDF_JS_Legacy/build/pdf.worker.min.js';
-  
-  // 2. Use pdfjsLib to load a document
-  const loadingTask = pdfjsLib.getDocument(docPath);
-  
-  loadingTask.promise.then(function(pdf) {
-      console.log('PDF loaded successfully!');
-      console.log('Total pages:', pdf.numPages);
-      
-      // Fetch the first page
-      return pdf.getPage(1);
-  }).then(function(page) {
-      console.log('Page 1 loaded');
-      
-      // You can now render the page to a <canvas> element here
-  }).catch(function(error) {
-      console.error('Error loading PDF:', error);
-  });
-}
-
 // Picture of the Day Prompt
 function picOfDay(elemID, description, date, url, picNumber) {
 
@@ -300,7 +226,6 @@ document.addEventListener('DOMContentLoaded', function() {
     subpage_buttons_insert();
     subpage_buttons_insert_individual();
     //innerPage("PDF-Dark-Mode");
-    //renderPDF_Subpage("https://www.piceno.dev/mario/Documents/cybersecurity-certs.pdf", "");
     scroll_to_top();
 });
 
