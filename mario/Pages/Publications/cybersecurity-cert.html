@@ -58,7 +58,26 @@
                 <script src="https://www.piceno.dev/PDF_JS_Legacy/build/pdf.js"></script>
                 <script>
                   // Set the worker source path to match version 2.6.347
-                  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://www.piceno.dev/PDF_JS_Legacy/build/pdf.worker.min.js';
+                  //pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://www.piceno.dev/PDF_JS_Legacy/build/pdf.worker.min.js';
+                    // 1. Point the library to the global worker script you loaded
+                      pdfjsLib.GlobalWorkerOptions.workerSrc = '/PDF_JS_Legacy/build/pdf.worker.min.js';
+                      
+                      // 2. Use pdfjsLib to load a document
+                      const loadingTask = pdfjsLib.getDocument('/Documents/cybersecurity-certs.pdf');
+                      
+                      loadingTask.promise.then(function(pdf) {
+                          console.log('PDF loaded successfully!');
+                          console.log('Total pages:', pdf.numPages);
+                          
+                          // Fetch the first page
+                          return pdf.getPage(1);
+                      }).then(function(page) {
+                          console.log('Page 1 loaded');
+                          
+                          // You can now render the page to a <canvas> element here
+                      }).catch(function(error) {
+                          console.error('Error loading PDF:', error);
+                      });
                 </script>
                 
                 <canvas id="pdf-canvas" width="100%" height="750px" style="border: 1px solid #ccc;" class="PDF_Embed">
