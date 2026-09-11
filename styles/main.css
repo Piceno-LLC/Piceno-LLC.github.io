@@ -192,6 +192,17 @@ Footer + Header = 90px total (Dynamically loaded).
      width: 80vw;
      margin-bottom: 10px;
 }
+.container_paragraph{
+     text-align: center;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     align-content: center;
+     flex-wrap: wrap;
+     width: 60%;
+     margin-bottom: 10px;
+}
  .about_me{
      width: 75%;
      text-align: center;
