@@ -438,6 +438,7 @@ Footer + Header = 90px total (Dynamically loaded).
      align-items: center;
      justify-content: center;
      flex-direction: column;
+     width: 100%;
 }
 .Complete{
      color: rgb(0, 207, 21);
