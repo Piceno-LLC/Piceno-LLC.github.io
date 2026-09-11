@@ -55,67 +55,14 @@
 
             <div class="Sliced_Div">
                 <br>
-
                 
-                <div id="pdf-canvas" width="100%" height="750" style="border: 1px solid #ccc;" class="PDF_Embed"></div>
-
-                <script src="https://www.piceno.dev/PDF_JS_Legacy/build/pdf.js"></script>
-                
-                <script>
-                    // PDF.js 2.6.347 worker
-                    pdfjsLib.GlobalWorkerOptions.workerSrc = '/PDF_JS_Legacy/build/pdf.worker.min.js';
-                    
-                    const container = document.getElementById('pdf-canvas');
-                    const loadingTask = pdfjsLib.getDocument('/mario/Documents/cybersecurity-certs.pdf');
-                    
-                    loadingTask.promise.then(function(pdf) {
-                        console.log('PDF loaded successfully!');
-                        console.log('Total pages:', pdf.numPages);
-                    
-                        // Loop through all pages
-                        for (let i = 1; i <= pdf.numPages; i++) {
-                            renderPage(pdf, i);
-                        }
-                    }).catch(function(error) {
-                        console.error('Error loading PDF:', error);
-                    });
-                    
-                    function renderPage(pdf, pageNumber) {
-                        pdf.getPage(pageNumber).then(function(page) {
-                            const scale = 1.5;
-                            const viewport = page.getViewport({ scale: scale });
-                    
-                            // Create a new canvas for each page
-                            const canvas = document.createElement('canvas');
-                            const context = canvas.getContext('2d');
-                            canvas.width = viewport.width;
-                            canvas.height = viewport.height;
-                            
-                            // Append the canvas to the container div
-                            container.appendChild(canvas);
-                    
-                            const renderContext = {
-                                canvasContext: context,
-                                viewport: viewport
-                            };
-                    
-                            return page.render(renderContext).promise;
-                        }).then(function() {
-                            console.log(`Page ${pageNumber} rendered successfully!`);
-                        }).catch(function(error) {
-                            console.error(`Error rendering page ${pageNumber}:`, error);
-                        });
-                    }
-                </script>
-
-                
-                <canvas id="pdf-canvas-3" width="100%" height="750px" style="border: 1px solid #ccc;" class="PDF_Embed">
-                    <object class="PDF_Embed" data="https://www.piceno/mario/Documents/cybersecurity-certs.pdf#view=FitW" type="application/pdf">
+                <iframe src="https://www.piceno.dev/web/viewer.html?file=https://www.piceno.dev/mario/Documents/cybersecurity-certs.pdf" width="100%" height="750px" style="border: 1px solid #ccc;" class="PDF_Embed">
+                    <object class="PDF_Embed" data="https://www.piceno.dev/mario/Documents/cybersecurity-certs.pdf#view=FitW" type="application/pdf">
                         <p>Your browser does not support embedded PDFs. 
                            <a href="https://www.piceno.dev/mario/Documents/cybersecurity-certs.pdf">Download the PDF instead</a>.
                         </p>
                     </object>
-                </canvas>
+                </iframe>
                 
                 <br>
             </div>
