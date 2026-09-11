@@ -439,7 +439,7 @@ Footer + Header = 90px total (Dynamically loaded).
      width: 100%;
 }
  .PDF_Embed{
-     width: 100%;
+     width: 50%;
      /*height: 800px;*/
      margin-bottom: 10px;
 }
@@ -526,7 +526,7 @@ Footer + Header = 90px total (Dynamically loaded).
          width: 100%;
     }
       .PDF_Embed{
-         width: 95%;
+         width: 70%;
          /*height: 500px;*/
     }
      .Button_Projects_Container{
