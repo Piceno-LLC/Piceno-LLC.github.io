@@ -408,9 +408,8 @@ Footer + Header = 90px total (Dynamically loaded).
      height: 800px;
      margin-bottom: 10px;
 }
- .sliced_div{
-     border-top: 4px solid #FFCC00;
-     border-bottom: 4px solid #FFCC00;
+ .sliced_div_container{
+      
 }
  .sliced_div_F{
      border-bottom: 4px solid #FFCC00;
