@@ -14,6 +14,57 @@ var previous_pic_elemID = null;
 // Edit scroll history:
 window.history.scrollRestoration = 'manual';
 
+/* 
+PDF Viewer - Legacy//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+*/
+// 1. Get the library instance (assuming it is imported or loaded via script tag)
+const pdfjsLib = window['/build/pdf'];
+
+// 2. IMPORTANT: Define the worker path so PDF parsing happens in a background thread
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://www.piceno.dev/PDF_JS_Legacy/build/pdf.worker.min.js';
+
+const pdfUrl = 'https://www.piceno.dev/mario/Documents/BLS_card.pdf';
+const container = document.getElementById('pdf-container');
+
+// 3. Load the document
+pdfjsLib.getDocument(pdfUrl).promise.then((pdfDocument) => {
+  console.log(`PDF loaded. Total pages: ${pdfDocument.numPages}`);
+  
+  // Render the first page as an example
+  renderPage(1, pdfDocument);
+}).catch((error) => {
+  console.error('Error loading PDF: ', error);
+});
+
+// 4. Render helper function
+function renderPage(pageNumber, pdfDocument) {
+  pdfDocument.getPage(pageNumber).then((page) => {
+    const scale = 1.5; // Adjust zoom scale as needed
+    const viewport = page.getViewport({ scale: scale });
+
+    // Create a new canvas element dynamically for the page
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+    canvas.height = viewport.height;
+    canvas.width = viewport.width;
+
+    // Append to container
+    container.appendChild(canvas);
+
+    // Prepare rendering context
+    const renderContext = {
+      canvasContext: context,
+      viewport: viewport
+    };
+
+    // Draw the visual contents onto the canvas
+    page.render(renderContext).promise.then(() => {
+      console.log(`Page ${pageNumber} successfully rendered.`);
+    });
+  });
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // Picture of the Day Prompt
 function picOfDay(elemID, description, date, url, picNumber) {
 
