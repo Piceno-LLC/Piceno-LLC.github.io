@@ -14,8 +14,6 @@ var previous_pic_elemID = null;
 // Edit scroll history:
 window.history.scrollRestoration = 'manual';
 
-import * as pdfjsLib from 'PDF_JS_Legacy/build/pdf.js';
-
 /* 
 PDF Viewer - Legacy//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
