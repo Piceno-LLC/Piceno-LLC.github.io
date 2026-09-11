@@ -332,6 +332,7 @@ if (selector) {
 }
 
 // Handle PDF File Downloadless
+/*
 async function handleFile_Downloadless(fileUrl, insert_location) {
     try {
         // 1. Fetch the data from the link
@@ -368,6 +369,53 @@ async function handleFile_Downloadless(fileUrl, insert_location) {
         console.error("Error processing file parameter:", error);
     }
 }
+*/
+async function handleFile_Downloadless(fileUrl, insert_location) {
+    try {
+        console.log("Fetching PDF:", fileUrl);
+
+        const response = await fetch(fileUrl);
+
+        if (!response.ok) {
+            throw new Error(
+                `HTTP ${response.status}: ${response.statusText}`
+            );
+        }
+
+        const blob = await response.blob();
+
+        console.log(
+            "PDF downloaded:",
+            blob.size,
+            "bytes",
+            blob.type
+        );
+
+        const arrayBuffer = await blob.arrayBuffer();
+        const fileData = new Uint8Array(arrayBuffer);
+
+        originalFileName =
+            fileUrl
+                .substring(fileUrl.lastIndexOf("/") + 1)
+                .replace(/\.pdf$/i, "");
+
+        await ensurePdfLibraries();
+
+        originalPdfData = fileData;
+
+        await renderPDF_Downloadless(
+            fileData,
+            insert_location
+        );
+
+    } catch (error) {
+        console.error(
+            "handleFile_Downloadless failed:",
+            error
+        );
+    }
+}
+
 
 // Handle PDF File
 function handleFile(file) {
