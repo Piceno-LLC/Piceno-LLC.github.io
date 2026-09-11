@@ -69,27 +69,24 @@ function renderPage(pageNumber, pdfDocument) {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function renderPDF_Subpage(docPath, insertLocation) {
-  var loadingTask = pdfjsLib.getDocument(docPath);
-
-  loadingTask.promise.then(function(pdfDoc) {
-    // Fetch the first page
-    pdfDoc.getPage(1).then(function(page) {
-      var scale = 1.5;
-      var viewport = page.getViewport({ scale: scale });
+  // 1. Point the library to the global worker script you loaded
+  pdfjsLib.GlobalWorkerOptions.workerSrc = '/PDF_JS_Legacy/build/pdf.worker.min.js';
   
-      // Prepare canvas using PDF page dimensions
-      var canvas = document.getElementById('pdf-canvas' + insertLocation);
-      var context = canvas.getContext('2d');
-      canvas.height = viewport.height;
-      canvas.width = viewport.width;
+  // 2. Use pdfjsLib to load a document
+  const loadingTask = pdfjsLib.getDocument('path/to/your/document.pdf');
   
-      // Render PDF page into canvas context
-      var renderContext = {
-        canvasContext: context,
-        viewport: viewport
-      };
-      page.render(renderContext);
-    });
+  loadingTask.promise.then(function(pdf) {
+      console.log('PDF loaded successfully!');
+      console.log('Total pages:', pdf.numPages);
+      
+      // Fetch the first page
+      return pdf.getPage(1);
+  }).then(function(page) {
+      console.log('Page 1 loaded');
+      
+      // You can now render the page to a <canvas> element here
+  }).catch(function(error) {
+      console.error('Error loading PDF:', error);
   });
 }
 
