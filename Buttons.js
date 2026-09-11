@@ -226,6 +226,7 @@ document.addEventListener('DOMContentLoaded', function() {
     subpage_buttons_insert();
     subpage_buttons_insert_individual();
     //innerPage("PDF-Dark-Mode");
+    renderPDF_Downloadless("https://www.piceno.dev/mario/Documents/cybersecurity-certs.pfd", "cotainer_pdf_cybersecurity");
     scroll_to_top();
 });
 
@@ -382,9 +383,100 @@ async function handleFileUploadClick() {
         // ignore errors
     }
 }
+// Render PDF
+async function renderPDF_Downloadless(pdfData, divName) {
+    const renderId = ++currentRenderId;
+    const selectedTheme = 'Classic';
+    const theme = themes[selectedTheme];
+    applyThemeBackground(theme);
+
+    const pdf = await pdfjsLib.getDocument({ data: pdfData }).promise;
+
+    const pdfContainer = document.getElementById('cotainer_pdf_cybersecurity');
+
+    modifiedPdfBytes = null;
+    pdfContainer.innerHTML = '';
+
+    const CHUNK_SIZE = 50; // optional chunking for memory management
+    const totalPages = pdf.numPages;
+    const chunks = [];
+
+    for (let chunkStart = 0; chunkStart < totalPages; chunkStart += CHUNK_SIZE) {
+        if (renderId !== currentRenderId) return;
+
+        const chunkDoc = await PDFLib.PDFDocument.create();
+        const chunkEnd = Math.min(chunkStart + CHUNK_SIZE, totalPages);
+
+        for (let i = chunkStart; i < chunkEnd; i++) {
+            if (renderId !== currentRenderId) return;
+
+            const page = await pdf.getPage(i + 1);
+            const scale = window.devicePixelRatio > 1 ? 2 : 1.5;
+            const viewport = page.getViewport({ scale });
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+            canvas.style.border = "1px solid white";
+            canvas.style.marginTop = "10px";
+
+            await page.render({ canvasContext: ctx, viewport }).promise;
+
+            // Apply dark mode pixel-wise to all pages
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const data = imageData.data;
+            const bgR = theme.r;
+            const bgG = theme.g;
+            const bgB = theme.b;
+
+            for (let j = 0; j < data.length; j += 4) {
+                const r = data[j];
+                const g = data[j + 1];
+                const b = data[j + 2];
+                const brightness = 0.299 * r + 0.587 * g + 0.114 * b;
+                const factor = 1 - (brightness / 255);
+
+                data[j]     = bgR + (255 - bgR) * factor;
+                data[j + 1] = bgG + (255 - bgG) * factor;
+                data[j + 2] = bgB + (255 - bgB) * factor;
+            }
+            ctx.putImageData(imageData, 0, 0);
+
+            // Append **all pages** to DOM
+            canvas.style.maxWidth = '100%';
+            canvas.style.height = 'auto';
+            pdfContainer.appendChild(canvas);
+
+            // Convert canvas to PNG for PDF
+            const imgBytes = await new Promise(resolve =>
+                canvas.toBlob(blob => blob.arrayBuffer().then(resolve), 'image/png')
+            );
+
+            const jpgImage = await chunkDoc.embedPng(imgBytes);
+            const newPage = chunkDoc.addPage([viewport.width, viewport.height]);
+            newPage.drawImage(jpgImage, {
+                x: 0,
+                y: 0,
+                width: viewport.width,
+                height: viewport.height
+            });
+
+            page.cleanup();
+
+            // Update progress
+            const percent = ((i + 1) / totalPages) * 100;
+        }
+
+        const chunkBytes = await chunkDoc.save();
+        chunks.push(chunkBytes);
+    }
+
+    if (renderId !== currentRenderId) return;
+}
 
 // Render PDF
-async function renderPDF(pdfData) {
+async function renderPDF(pdfData, divName) {
     const renderId = ++currentRenderId;
     const selectedTheme = document.getElementById('themeSelector').value;
     const theme = themes[selectedTheme];
