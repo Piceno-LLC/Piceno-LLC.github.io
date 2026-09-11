@@ -168,8 +168,7 @@ Footer + Header = 90px total (Dynamically loaded).
      height: 100%;
 }
  .Image_Fill{
-     width: 100%;
-     height: 100%;
+     width: 50%;
      -webkit-user-drag: none;
      cursor: pointer;
 }
@@ -187,7 +186,7 @@ Footer + Header = 90px total (Dynamically loaded).
      justify-content: center;
      align-content: center;
      flex-wrap: wrap;
-     width: 50%;
+     width: 80vw;
      margin-bottom: 10px;
 }
  .about_me{
