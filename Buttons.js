@@ -388,7 +388,6 @@ async function renderPDF_Downloadless(pdfData, divName) {
     const renderId = ++currentRenderId;
     const selectedTheme = 'classic';
     const theme = themes[selectedTheme];
-    applyThemeBackground(theme);
 
     const pdf = await pdfjsLib.getDocument({ data: pdfData }).promise;
 
