@@ -55,32 +55,56 @@
 
             <div class="Sliced_Div">
                 <br>
-                <script src="https://www.piceno.dev/PDF_JS_Legacy/build/pdf.js"></script>
-                <script>
-                  // Set the worker source path to match version 2.6.347
-                  //pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://www.piceno.dev/PDF_JS_Legacy/build/pdf.worker.min.js';
-                    // 1. Point the library to the global worker script you loaded
-                      pdfjsLib.GlobalWorkerOptions.workerSrc = '/PDF_JS_Legacy/build/pdf.worker.min.js';
-                      
-                      // 2. Use pdfjsLib to load a document
-                      const loadingTask = pdfjsLib.getDocument('/mario/Documents/cybersecurity-certs.pdf');
-                      
-                      loadingTask.promise.then(function(pdf) {
-                          console.log('PDF loaded successfully!');
-                          console.log('Total pages:', pdf.numPages);
-                          
-                          // Fetch the first page
-                          return pdf.getPage(1);
-                      }).then(function(page) {
-                          console.log('Page 1 loaded');
-                          
-                          // You can now render the page to a <canvas> element here
-                      }).catch(function(error) {
-                          console.error('Error loading PDF:', error);
-                      });
-                </script>
+
                 
-                <canvas id="pdf-canvas" width="100%" height="750px" style="border: 1px solid #ccc;" class="PDF_Embed">
+                <canvas id="pdf-canvas" width="100%" height="750" style="border: 1px solid #ccc;" class="PDF_Embed"></canvas>
+
+                <script src="https://www.piceno.dev/PDF_JS_Legacy/build/pdf.js"></script>
+                
+                <script>
+                    // PDF.js 2.6.347 worker
+                    pdfjsLib.GlobalWorkerOptions.workerSrc = '/PDF_JS_Legacy/build/pdf.worker.min.js';
+                
+                    const canvas = document.getElementById('pdf-canvas');
+                    const context = canvas.getContext('2d');
+                
+                    const loadingTask = pdfjsLib.getDocument(
+                        '/mario/Documents/cybersecurity-certs.pdf'
+                    );
+                
+                    loadingTask.promise
+                        .then(function(pdf) {
+                            console.log('PDF loaded successfully!');
+                            console.log('Total pages:', pdf.numPages);
+                
+                            return pdf.getPage(1);
+                        })
+                        .then(function(page) {
+                            console.log('Page 1 loaded');
+                
+                            const viewport = page.getViewport({ scale: 1.5 });
+                
+                            // Set the actual canvas dimensions based on the PDF page
+                            canvas.width = viewport.width;
+                            canvas.height = viewport.height;
+                
+                            const renderContext = {
+                                canvasContext: context,
+                                viewport: viewport
+                            };
+                
+                            return page.render(renderContext).promise;
+                        })
+                        .then(function() {
+                            console.log('Page 1 rendered successfully!');
+                        })
+                        .catch(function(error) {
+                            console.error('Error loading/rendering PDF:', error);
+                        });
+                </script>
+
+                
+                <canvas id="pdf-canvas-3" width="100%" height="750px" style="border: 1px solid #ccc;" class="PDF_Embed">
                     <object class="PDF_Embed" data="https://www.piceno/mario/Documents/cybersecurity-certs.pdf#view=FitW" type="application/pdf">
                         <p>Your browser does not support embedded PDFs. 
                            <a href="https://www.piceno.dev/mario/Documents/cybersecurity-certs.pdf">Download the PDF instead</a>.
