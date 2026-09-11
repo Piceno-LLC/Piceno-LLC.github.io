@@ -272,6 +272,12 @@ const themes = {
         g: 35,
         b: 30,
         name: 'Forest Green'
+    },
+    original: {
+        r: 255,
+        g: 255,
+        b: 255,
+        name: 'Original'
     }
 };
 
@@ -423,7 +429,7 @@ async function handleFileUploadClick() {
 // Render PDF
 async function renderPDF_Downloadless(pdfData, divName) {
     const renderId = ++currentRenderId;
-    const selectedTheme = 'classic';
+    const selectedTheme = 'original';
     const theme = themes[selectedTheme];
 
     const pdf = await pdfjsLib.getDocument({ data: pdfData }).promise;
