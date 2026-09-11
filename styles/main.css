@@ -402,7 +402,7 @@ Footer + Header = 90px total (Dynamically loaded).
      color: rgb(232, 148, 2);
 }
 .Download_Link{
-     color: rgb(74, 155, 255);
+     color: #FFCC00;
      cursor: pointer;
      text-decoration: none;
 }
@@ -418,13 +418,13 @@ Footer + Header = 90px total (Dynamically loaded).
      margin: 0;
 }
 .Footer_Link_Starter{
-     color: rgb(74, 155, 255);
+     color: #FFCC00;
      cursor: pointer;
      text-align: right;
      text-decoration: none;
 }
 .Footer_Link{
-     color: rgb(74, 155, 255);
+     color: #FFCC00;
      cursor: pointer;
      text-align: right;
      padding-left: 1rem;
