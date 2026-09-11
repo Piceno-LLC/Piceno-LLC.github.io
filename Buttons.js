@@ -286,7 +286,7 @@ const themes = {
 const pdfJsSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js";
 const pdfWorkerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js";
 const pdfLibSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.11.0/pdf-lib.min.js";
-*//
+*/
 const pdfJsSrc = "https://www.piceno.dev/PDFjs/pdf.min.js";
 const pdfWorkerSrc = "https://www.piceno.dev/PDFjs/pdf.worker.min.js";
 const pdfLibSrc = "https://www.piceno.dev/PDFjs/pdf-lib.min.js";
