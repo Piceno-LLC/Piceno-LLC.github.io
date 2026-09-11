@@ -18,7 +18,8 @@ window.history.scrollRestoration = 'manual';
 PDF Viewer - Legacy//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 */
 // 1. Get the library instance (assuming it is imported or loaded via script tag)
-const pdfjsLib = window['/build/pdf'];
+const pdfjsLib = window['PDF_JS_Legacy/build/pdf.js'];
+import * as pdfjsLib from 'PDF_JS_Legacy/build/pdf.js'
 
 // 2. IMPORTANT: Define the worker path so PDF parsing happens in a background thread
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://www.piceno.dev/PDF_JS_Legacy/build/pdf.worker.min.js';
