@@ -245,6 +245,7 @@ Footer + Header = 90px total (Dynamically loaded).
      max-width: 100%;
      box-sizing: border-box;
      overflow: hidden;
+     margin: 5px;
 }
  .General_Header_2{
      font-size: 16px;
@@ -256,6 +257,7 @@ Footer + Header = 90px total (Dynamically loaded).
      max-width: 100%;
      box-sizing: border-box;
      overflow: hidden;
+     margin: 5px;
 }
  .General_Header_1_L{
      font-size: 20px;
