@@ -386,7 +386,7 @@ async function handleFileUploadClick() {
 // Render PDF
 async function renderPDF_Downloadless(pdfData, divName) {
     const renderId = ++currentRenderId;
-    const selectedTheme = 'Classic';
+    const selectedTheme = 'classic';
     const theme = themes[selectedTheme];
     applyThemeBackground(theme);
 
