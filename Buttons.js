@@ -226,7 +226,6 @@ document.addEventListener('DOMContentLoaded', function() {
     subpage_buttons_insert();
     subpage_buttons_insert_individual();
     //innerPage("PDF-Dark-Mode");
-    handleFile_Downloadless("https://www.piceno.dev/mario/Documents/cybersecurity-certs.pdf", "cotainer_pdf_cybersecurity");
     scroll_to_top();
 });
 
