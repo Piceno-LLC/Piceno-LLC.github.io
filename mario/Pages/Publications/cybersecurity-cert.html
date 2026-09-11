@@ -65,7 +65,7 @@
                     // PDF.js 2.6.347 worker
                     pdfjsLib.GlobalWorkerOptions.workerSrc = '/PDF_JS_Legacy/build/pdf.worker.min.js';
                     
-                    const container = document.getElementById('pdf-container');
+                    const container = document.getElementById('pdf-canvas');
                     const loadingTask = pdfjsLib.getDocument('/mario/Documents/cybersecurity-certs.pdf');
                     
                     loadingTask.promise.then(function(pdf) {
