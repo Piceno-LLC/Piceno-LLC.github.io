@@ -361,6 +361,13 @@ Footer + Header = 90px total (Dynamically loaded).
      flex-direction: column;
      align-items: center;
 }
+.Sub_Head_Page_Hidden{
+     display: none;
+     width: 100%;
+     justify-content: center;
+     flex-direction: column;
+     align-items: center;
+}
  .Skills_H1{
      font-size: 20px;
      word-break: break-all;
