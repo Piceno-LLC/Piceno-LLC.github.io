@@ -233,15 +233,18 @@ Footer + Header = 90px total (Dynamically loaded).
      font-size: 18px;
      color: rgb(255, 255, 255);
      font-weight: normal;
+     width: 100%;
 }
  .Header_2{
      font-size: 14px;
      color: rgb(255, 255, 255);
      font-weight: normal;
+     width: 100%;
 }
  .Paragraph{
      text-align: left;
      color: rgb(255, 255, 255);
+     width: 100%;
 }
 .Paragraph_Image{
      width: 350px;
@@ -259,6 +262,7 @@ Footer + Header = 90px total (Dynamically loaded).
      box-sizing: border-box;
      overflow: hidden;
      margin: 5px;
+     width: 100%;
 }
  .General_Header_2{
      font-size: 16px;
@@ -271,6 +275,7 @@ Footer + Header = 90px total (Dynamically loaded).
      box-sizing: border-box;
      overflow: hidden;
      margin: 5px;
+     width: 100%;
 }
  .General_Header_1_L{
      font-size: 20px;
