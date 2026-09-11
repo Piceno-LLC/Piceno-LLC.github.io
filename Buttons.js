@@ -486,6 +486,7 @@ async function renderPDF_Downloadless(pdfData, divName) {
             }
             ctx.putImageData(imageData, 0, 0);
             */
+            ctx.putImageData(imageData, 0, 0);
             // Append **all pages** to DOM
             canvas.style.maxWidth = '100%';
             canvas.style.height = 'auto';
