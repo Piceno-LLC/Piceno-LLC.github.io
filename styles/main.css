@@ -470,6 +470,10 @@ Footer + Header = 90px total (Dynamically loaded).
 }
 
  @media (max-width: 1200px) {
+      .Image_Fill{
+          width: 100%;
+     }
+     
       .Footer_Link{
            padding-left: .6rem;
       }
