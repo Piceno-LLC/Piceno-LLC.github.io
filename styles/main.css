@@ -52,6 +52,7 @@ Footer + Header = 90px total (Dynamically loaded).
      text-align: center;
      margin-top: 10px;
      margin-bottom: 15px;
+     width: 60%;
 }
 .Button_Projects_Container_SubPage{
      display: flex;
@@ -495,6 +496,7 @@ Footer + Header = 90px total (Dynamically loaded).
          justify-content: center;
          flex-wrap: wrap;
          margin-top: 5px;
+         width: 100%;
     }
      .Button_Projects{
          border-radius: 2px;
