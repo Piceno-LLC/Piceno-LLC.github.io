@@ -429,7 +429,7 @@ async function handleFileUploadClick() {
 // Render PDF
 async function renderPDF_Downloadless(pdfData, divName) {
     const renderId = ++currentRenderId;
-    const selectedTheme = 'original';
+    const selectedTheme = 'forest';
     const theme = themes[selectedTheme];
 
     const pdf = await pdfjsLib.getDocument({ data: pdfData }).promise;
