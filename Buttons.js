@@ -392,7 +392,7 @@ async function renderPDF_Downloadless(pdfData, divName) {
 
     const pdf = await pdfjsLib.getDocument({ data: pdfData }).promise;
 
-    const pdfContainer = document.getElementById('cotainer_pdf_cybersecurity');
+    const pdfContainer = document.getElementById(divName);
 
     modifiedPdfBytes = null;
     pdfContainer.innerHTML = '';
