@@ -166,6 +166,9 @@ Footer + Header = 90px total (Dynamically loaded).
  .Home_Screen_Div{
      width: 100%;
      height: 100%;
+     align-items: center;
+     justify-content: center;
+     display: flex;
 }
  .Image_Fill{
      width: 50%;
