@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function() {
     subpage_buttons_insert();
     subpage_buttons_insert_individual();
     //innerPage("PDF-Dark-Mode");
-    handleFile_Downloadless(fetch("https://www.piceno.dev/mario/Documents/cybersecurity-certs.pdf"), "cotainer_pdf_cybersecurity");
+    handleFile_Downloadless("https://www.piceno.dev/mario/Documents/cybersecurity-certs.pdf", "cotainer_pdf_cybersecurity");
     scroll_to_top();
 });
 
@@ -327,16 +327,41 @@ if (selector) {
 }
 
 // Handle PDF File Downloadless
-function handleFile_Downloadless(file, insert_location) {
-    originalFileName = file.name.replace(/\.pdf$/i, '');
-    const fileReader = new FileReader();
-    fileReader.onload = async function() {
-        const fileData = new Uint8Array(this.result);
-        await ensurePdfLibraries();
-        originalPdfData = fileData;
-        await renderPDF_Downloadless(fileData, insert_location);
-    };
-    fileReader.readAsArrayBuffer(file);
+function handleFile_Downloadless(fileUrl, insert_location) {
+    try {
+        // 1. Fetch the data from the link
+        const response = await fetch(fileUrl);
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch file: ${response.statusText}`);
+        }
+    
+        // 2. Convert the response into a Blob (Binary Large Object)
+        const blob = await response.blob();
+    
+        // 3. Extract the file name from the URL
+        const fileName = fileUrl.substring(fileUrl.lastIndexOf('/') + 1);
+    
+        // 4. Create a standard JavaScript File object
+        const file = new File([blob], fileName, { type: blob.type });
+    
+        // --- Your logic here ---
+        originalFileName = file.name.replace(/\.pdf$/i, '');
+        const fileReader = new FileReader();
+        fileReader.onload = async function() {
+            const fileData = new Uint8Array(this.result);
+            await ensurePdfLibraries();
+            originalPdfData = fileData;
+            await renderPDF_Downloadless(fileData, insert_location);
+        };
+        fileReader.readAsArrayBuffer(file);
+        
+        // Example: You can now append this to FormData to upload it
+        // const formData = new FormData();
+        // formData.append('file', file);
+    } catch (error) {
+        console.error("Error processing file parameter:", error);
+    }
 }
 
 // Handle PDF File
