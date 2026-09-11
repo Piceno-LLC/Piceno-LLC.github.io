@@ -43,7 +43,7 @@ function picOfDay(elemID, description, date, url, picNumber) {
         // Close Current Pic of Day
         let prompt = document.getElementById(elemID);
         prompt.style.display = "none";
-        prompt.innerHTML = "";
+        prompt.replaceChildren();
         previous_pic_ID = null;
         
         // Scrool to Calendar
@@ -290,41 +290,55 @@ const pdfLibSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.11.0/pdf-lib
 const pdfJsSrc = "https://www.piceno.dev/PDFjs/pdf.min.js";
 const pdfWorkerSrc = "https://www.piceno.dev/PDFjs/pdf.worker.min.js";
 const pdfLibSrc = "https://www.piceno.dev/PDFjs/pdf-lib.min.js";
+let pdfJsReadyPromise = null;
 let pdfLibReadyPromise = null;
 
-// Load Libraries
-function loadPdfLibraries() {
-    if (pdfLibReadyPromise) return pdfLibReadyPromise;
-    pdfLibReadyPromise = new Promise((resolve, reject) => {
-        const pdfJsScript = document.createElement('script');
-        pdfJsScript.src = pdfJsSrc;
-        pdfJsScript.crossOrigin = 'anonymous';
-        pdfJsScript.referrerPolicy = 'no-referrer';
-        pdfJsScript.onload = () => {
+function loadPdfJs() {
+    if (pdfJsReadyPromise) return pdfJsReadyPromise;
+
+    pdfJsReadyPromise = new Promise((resolve, reject) => {
+        const script = document.createElement("script");
+
+        script.src = pdfJsSrc;
+        script.crossOrigin = "anonymous";
+        script.referrerPolicy = "no-referrer";
+
+        script.onload = () => {
             pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorkerSrc;
-            const pdfLibScript = document.createElement('script');
-            pdfLibScript.src = pdfLibSrc;
-            pdfLibScript.crossOrigin = 'anonymous';
-            pdfLibScript.referrerPolicy = 'no-referrer';
-            pdfLibScript.onload = () => resolve();
-            pdfLibScript.onerror = reject;
-            document.head.appendChild(pdfLibScript);
+            resolve();
         };
-        pdfJsScript.onerror = reject;
-        document.head.appendChild(pdfJsScript);
+
+        script.onerror = reject;
+
+        document.head.appendChild(script);
     });
+
+    return pdfJsReadyPromise;
+}
+
+function loadPdfLib() {
+    if (pdfLibReadyPromise) return pdfLibReadyPromise;
+
+    pdfLibReadyPromise = new Promise((resolve, reject) => {
+        const script = document.createElement("script");
+
+        script.src = pdfLibSrc;
+        script.crossOrigin = "anonymous";
+        script.referrerPolicy = "no-referrer";
+
+        script.onload = resolve;
+        script.onerror = reject;
+
+        document.head.appendChild(script);
+    });
+
     return pdfLibReadyPromise;
 }
 
 // Wait for pdfLibraries
 async function ensurePdfLibraries() {
-    try {
-        await loadPdfLibraries();
-        //document.getElementById('fileInput').click(); // open file picker
-    } catch (e) {
-        alert("Unable to load PDF libraries. Please check your connection and try again.");
-        throw e;
-    }
+    await loadPdfJs();
+    await loadPdfLib();
 }
 
 // Apply Theme
@@ -336,75 +350,28 @@ if (selector) {
     applyThemeBackground(themes[selector.value]);
 }
 
-// Handle PDF File Downloadless
-/*
 async function handleFile_Downloadless(fileUrl, insert_location) {
     try {
-        // 1. Fetch the data from the link
-        const response = await fetch(fileUrl);
-        
-        if (!response.ok) {
-          throw new Error(`Failed to fetch file: ${response.statusText}`);
-        }
-    
-        // 2. Convert the response into a Blob (Binary Large Object)
-        const blob = await response.blob();
-    
-        // 3. Extract the file name from the URL
-        const fileName = fileUrl.substring(fileUrl.lastIndexOf('/') + 1);
-    
-        // 4. Create a standard JavaScript File object
-        const file = new File([blob], fileName, { type: blob.type });
-    
-        // --- Your logic here ---
-        originalFileName = file.name.replace(/\.pdf$/i, '');
-        const fileReader = new FileReader();
-        fileReader.onload = async function() {
-            const fileData = new Uint8Array(this.result);
-            await ensurePdfLibraries();
-            originalPdfData = fileData;
-            await renderPDF_Downloadless(fileData, insert_location);
-        };
-        fileReader.readAsArrayBuffer(file);
-        
-        // Example: You can now append this to FormData to upload it
-        // const formData = new FormData();
-        // formData.append('file', file);
-    } catch (error) {
-        console.error("Error processing file parameter:", error);
-    }
-}
-*/
-async function handleFile_Downloadless(fileUrl, insert_location) {
-    try {
-        console.log("Fetching PDF:", fileUrl);
+        // Start both operations simultaneously.
+        const fetchPromise = fetch(fileUrl);
+        const pdfJsPromise = loadPdfJs();
 
-        const response = await fetch(fileUrl);
+        const [response] = await Promise.all([
+            fetchPromise,
+            pdfJsPromise
+        ]);
 
         if (!response.ok) {
-            throw new Error(
-                `HTTP ${response.status}: ${response.statusText}`
-            );
+            throw new Error(`HTTP ${response.status}`);
         }
 
-        const blob = await response.blob();
-
-        console.log(
-            "PDF downloaded:",
-            blob.size,
-            "bytes",
-            blob.type
+        const fileData = new Uint8Array(
+            await response.arrayBuffer()
         );
 
-        const arrayBuffer = await blob.arrayBuffer();
-        const fileData = new Uint8Array(arrayBuffer);
-
-        originalFileName =
-            fileUrl
-                .substring(fileUrl.lastIndexOf("/") + 1)
-                .replace(/\.pdf$/i, "");
-
-        await ensurePdfLibraries();
+        originalFileName = fileUrl
+            .substring(fileUrl.lastIndexOf("/") + 1)
+            .replace(/\.pdf$/i, "");
 
         originalPdfData = fileData;
 
@@ -414,10 +381,7 @@ async function handleFile_Downloadless(fileUrl, insert_location) {
         );
 
     } catch (error) {
-        console.error(
-            "handleFile_Downloadless failed:",
-            error
-        );
+        console.error("Downloadless PDF error:", error);
     }
 }
 
@@ -481,15 +445,16 @@ async function handleFileUploadClick() {
 }
 
 
-// Render PDF to canvas without modifying colors or saving a file
 async function renderPDF_Downloadless(pdfData, divName) {
     const renderId = ++currentRenderId;
 
     try {
-        // Load PDF with PDF.js
-        const pdf = await pdfjsLib.getDocument({ data: pdfData }).promise;
+        const pdf = await pdfjsLib.getDocument({
+            data: pdfData,
+            disableAutoFetch: false,
+            disableStream: false
+        }).promise;
 
-        // Find the container
         const pdfContainer = document.getElementById(divName);
 
         if (!pdfContainer) {
@@ -497,67 +462,86 @@ async function renderPDF_Downloadless(pdfData, divName) {
             return;
         }
 
-        // Clear previous pages
-        pdfContainer.innerHTML = '';
+        pdfContainer.replaceChildren();
 
         const totalPages = pdf.numPages;
 
-        // Render each page
-        for (let i = 0; i < totalPages; i++) {
+        const CONCURRENCY = 3;
+        const scale = 1;
 
-            // Stop if another render has started
-            if (renderId !== currentRenderId) {
-                return;
-            }
+        async function renderPage(pageNumber) {
+            if (renderId !== currentRenderId) return;
 
-            // Get PDF page
-            const page = await pdf.getPage(i + 1);
+            const page = await pdf.getPage(pageNumber);
 
-            // Render resolution
-            //const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-            //const scale = isIOS ? 1.5 : 2;
-            scale = 1;
-            
-            /*
-            const scale = window.devicePixelRatio > 1 ? 2 : 1.5;
-            */
             const viewport = page.getViewport({ scale });
 
-            // Create canvas
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
+            const canvas = document.createElement("canvas");
+            const ctx = canvas.getContext("2d", {
+                alpha: false
+            });
 
             canvas.width = viewport.width;
             canvas.height = viewport.height;
 
-            // Canvas styling
-            canvas.style.border = "1px solid white";
-            canvas.style.marginTop = "10px";
-            canvas.style.maxWidth = "100%";
-            canvas.style.height = "auto";
-            canvas.style.display = "block";
-            canvas.style.marginLeft = "auto";
-            canvas.style.marginRight = "auto";
+            canvas.style.cssText = `
+                border: 1px solid white;
+                margin-top: 10px;
+                max-width: 100%;
+                height: auto;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            `;
 
-            // Add canvas to container
-            pdfContainer.appendChild(canvas);
-
-            // Render PDF page directly to canvas
             await page.render({
                 canvasContext: ctx,
-                viewport: viewport
+                viewport
             }).promise;
 
-            // Clean up PDF.js page resources
             page.cleanup();
+
+            return {
+                pageNumber,
+                canvas
+            };
         }
 
-        console.log(`Rendered ${totalPages} PDF page(s) to canvas.`);
+        // Render in small batches to avoid excessive memory use.
+        for (let start = 1; start <= totalPages; start += CONCURRENCY) {
+            if (renderId !== currentRenderId) return;
+
+            const end = Math.min(
+                start + CONCURRENCY - 1,
+                totalPages
+            );
+
+            const results = await Promise.all(
+                Array.from(
+                    { length: end - start + 1 },
+                    (_, index) => renderPage(start + index)
+                )
+            );
+
+            if (renderId !== currentRenderId) return;
+
+            // Keep page order.
+            results
+                .sort((a, b) => a.pageNumber - b.pageNumber)
+                .forEach(result => {
+                    if (result) {
+                        pdfContainer.appendChild(result.canvas);
+                    }
+                );
+        }
+
+        console.log(`Rendered ${totalPages} PDF page(s).`);
 
     } catch (error) {
         console.error("Error rendering PDF:", error);
     }
 }
+
 
 // Render PDF
 async function renderPDF(pdfData, divName) {
@@ -565,18 +549,21 @@ async function renderPDF(pdfData, divName) {
     const selectedTheme = document.getElementById('themeSelector').value;
     const theme = themes[selectedTheme];
     applyThemeBackground(theme);
+    
+    await loadPdfLib();
+
 
     const pdf = await pdfjsLib.getDocument({ data: pdfData }).promise;
 
     const progressBar = document.getElementById('progressBar');
     const progressText = document.getElementById('progressText');
-    const pdfContainer = document.getElementById('pdfContainer');
+    const pdfContainer = document.getElementById(divName);
     const progressContainer = document.getElementById('progressContainer');
 
     modifiedPdfBytes = null;
     progressBar.style.width = '0';
     progressText.innerText = `0/${pdf.numPages}`;
-    pdfContainer.innerHTML = '';
+    pdfContainer.replaceChildren();
 
     const CHUNK_SIZE = 50; // optional chunking for memory management
     const totalPages = pdf.numPages;
