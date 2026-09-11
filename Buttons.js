@@ -509,7 +509,13 @@ async function renderPDF_Downloadless(pdfData, divName) {
             const page = await pdf.getPage(i + 1);
 
             // Render resolution
+            //const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+            //const scale = isIOS ? 1.5 : 2;
+            scale = 1;
+            
+            /*
             const scale = window.devicePixelRatio > 1 ? 2 : 1.5;
+            */
             const viewport = page.getViewport({ scale });
 
             // Create canvas
