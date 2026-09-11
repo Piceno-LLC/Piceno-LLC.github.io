@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function() {
     subpage_buttons_insert();
     subpage_buttons_insert_individual();
     //innerPage("PDF-Dark-Mode");
-    renderPDF_Downloadless("https://www.piceno.dev/mario/Documents/cybersecurity-certs.pfd", "cotainer_pdf_cybersecurity");
+    handleFile_Downloadless("https://www.piceno.dev/mario/Documents/cybersecurity-certs.pfd", "cotainer_pdf_cybersecurity");
     scroll_to_top();
 });
 
@@ -324,6 +324,19 @@ function applyThemeBackground(theme) {
 const selector = document.getElementById('themeSelector');
 if (selector) {
     applyThemeBackground(themes[selector.value]);
+}
+
+// Handle PDF File Downloadless
+function handleFile_Downloadless(file, insert_location) {
+    originalFileName = file.name.replace(/\.pdf$/i, '');
+    const fileReader = new FileReader();
+    fileReader.onload = async function() {
+        const fileData = new Uint8Array(this.result);
+        await ensurePdfLibraries();
+        originalPdfData = fileData;
+        await renderPDF_Downloadless(fileData, insert_location);
+    };
+    fileReader.readAsArrayBuffer(file);
 }
 
 // Handle PDF File
