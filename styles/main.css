@@ -344,6 +344,7 @@ Footer + Header = 90px total (Dynamically loaded).
      display: none;
      width: 100%;
      align-content: center;
+     flex-direction: column;
      vertical-align: middle;
 }
  .Skills_H1{
