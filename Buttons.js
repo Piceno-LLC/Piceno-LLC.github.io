@@ -197,7 +197,7 @@ function myFunctionProject(typ3) {
 
     // Show or Hide Desired Element
     if (x.style.display === "none") {
-        x.style.display = "block";
+        x.style.display = "flex";
     } else {
         x.style.display = "none";
     }
