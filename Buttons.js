@@ -73,7 +73,7 @@ function renderPDF_Subpage(docPath, insertLocation) {
   pdfjsLib.GlobalWorkerOptions.workerSrc = '/PDF_JS_Legacy/build/pdf.worker.min.js';
   
   // 2. Use pdfjsLib to load a document
-  const loadingTask = pdfjsLib.getDocument('path/to/your/document.pdf');
+  const loadingTask = pdfjsLib.getDocument(docPath);
   
   loadingTask.promise.then(function(pdf) {
       console.log('PDF loaded successfully!');
