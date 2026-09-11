@@ -215,6 +215,7 @@ Footer + Header = 90px total (Dynamically loaded).
      font-weight: normal;
      border-bottom: 4px solid #FFCC00;
      margin-bottom: 5px;
+     width: 100%;
 }
 .Header_1{
      font-size: 18px;
