@@ -671,4 +671,61 @@ Footer + Header = 90px total (Dynamically loaded).
      100% {
          transform: rotate(360deg);
     }
+
+/*CookieBot Div Styling*/
+.CookieDeclarationLastUpdated{
+     margin: 0;
+}
+.CookieDeclarationTypeDescription{
+     margin: 0;
+}
+.CookieDeclarationTable{
+     margin: 0;
+}
+.CookieDeclarationType{
+     margin: 0;
+}
+.CookieDeclarationDialogText{
+     margin: 0;
+}
+.CookieDeclarationIntro{
+     margin: 0;
+}
+.CookieDeclarationUserStatusPanel{
+     margin: 0;
+}
+.CookieDeclarationUserStatusLabel{
+     margin: 0;
+}
+.CookieDeclarationUserStatusLabelOff{
+     margin: 0;
+}
+.CookieDeclarationUserStatusLabelOffDoNotSell{
+     margin: 0;
+}
+.CookieDeclarationUserStatusLabelMulti{
+     margin: 0;
+}
+.CookieDeclarationUserStatusLabelMultiSettingsPref{
+     margin: 0;
+}
+.CookieDeclarationConsentIdAndDate{
+     margin: 0;
+}
+.CookieDeclarationUserStatusLabelOn{
+     margin: 0;
+}
+.CookieDeclarationChangeConsent{
+     margin: 0;
+}
+.CookieDeclarationUserStatusLabelWithdraw{
+     margin: 0;
+}
+.CookieDeclarationDoNotSell{
+     margin: 0;
+}
+.CookieDeclarationChangeConsentDoNotSell{
+     margin: 0;
+}
+
 }
