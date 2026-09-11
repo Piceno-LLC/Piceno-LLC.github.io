@@ -300,7 +300,7 @@ document.addEventListener('DOMContentLoaded', function() {
     subpage_buttons_insert();
     subpage_buttons_insert_individual();
     //innerPage("PDF-Dark-Mode");
-    renderPDF_Subpage("https://www.piceno.dev/mario/Documents/cybersecurity-certs.pdf", "");
+    //renderPDF_Subpage("https://www.piceno.dev/mario/Documents/cybersecurity-certs.pdf", "");
     scroll_to_top();
 });
 
