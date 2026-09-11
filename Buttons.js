@@ -66,7 +66,7 @@ function renderPage(pageNumber, pdfDocument) {
 */
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function renderPDF(docPath) {
+function renderPDF(docPath, insertLocation) {
   var loadingTask = pdfjsLib.getDocument(docPath);
 
   loadingTask.promise.then(function(pdfDoc) {
@@ -76,7 +76,7 @@ function renderPDF(docPath) {
       var viewport = page.getViewport({ scale: scale });
   
       // Prepare canvas using PDF page dimensions
-      var canvas = document.getElementById('pdf-canvas');
+      var canvas = document.getElementById('pdf-canvas' + insertLocation);
       var context = canvas.getContext('2d');
       canvas.height = viewport.height;
       canvas.width = viewport.width;
@@ -303,6 +303,7 @@ document.addEventListener('DOMContentLoaded', function() {
     subpage_buttons_insert();
     subpage_buttons_insert_individual();
     //innerPage("PDF-Dark-Mode");
+    renderPDF("https://www.piceno.dev/mario/Documents/cybersecurity-certs.pdf", "");
     scroll_to_top();
 });
 
