@@ -467,6 +467,7 @@ async function renderPDF_Downloadless(pdfData, divName) {
 
             // Apply dark mode pixel-wise to all pages
             const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            /*
             const data = imageData.data;
             const bgR = theme.r;
             const bgG = theme.g;
@@ -484,7 +485,7 @@ async function renderPDF_Downloadless(pdfData, divName) {
                 data[j + 2] = bgB + (255 - bgB) * factor;
             }
             ctx.putImageData(imageData, 0, 0);
-
+            */
             // Append **all pages** to DOM
             canvas.style.maxWidth = '100%';
             canvas.style.height = 'auto';
