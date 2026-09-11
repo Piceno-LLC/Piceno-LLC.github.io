@@ -327,7 +327,7 @@ if (selector) {
 }
 
 // Handle PDF File Downloadless
-function handleFile_Downloadless(fileUrl, insert_location) {
+async function handleFile_Downloadless(fileUrl, insert_location) {
     try {
         // 1. Fetch the data from the link
         const response = await fetch(fileUrl);
