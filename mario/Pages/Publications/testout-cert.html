@@ -55,6 +55,18 @@
             <div class="Sliced_Div">
                 <br>
                 
+                <p class="General_Header_2">Access: <a class="Download_Link" onclick="window.open('https://www.piceno.dev/mario/Documents/TestOut_Certificate.pdf')">Download</a></p>
+                
+                <!--Insert PDF Start-->
+                <div id="container_pdf" aria-live="polite" class="PDF_Embed"></div>
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        handleFile_Downloadless("https://www.piceno.dev/mario/Documents/TestOut_Certificate.pdf", "container_pdf");
+                    });
+                </script>
+                <!--Insert PDF End-->
+                
+                <!-- OG START
                 <iframe src="https://www.piceno.dev/web/viewer.html?file=https://www.piceno.dev/mario/Documents/TestOut_Certificate.pdf" width="100%" height="750px" style="border: 1px solid #ccc;" class="PDF_Embed">
                     <object class="PDF_Embed" data="https://www.piceno.dev/mario/Documents/TestOut_Certificate.pdf#view=FitW" type="application/pdf">
                         <p>Your browser does not support embedded PDFs. 
@@ -62,6 +74,7 @@
                         </p>
                     </object>
                 </iframe>
+                -->
                 
                 <br>
             </div>
