@@ -395,6 +395,9 @@ Footer + Header = 90px total (Dynamically loaded).
      border-top: 4px solid #FFCC00;
      border-bottom: 4px solid #FFCC00;
      margin-bottom: 10px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
 }
  .PDF_Embed{
      width: 100%;
@@ -407,6 +410,9 @@ Footer + Header = 90px total (Dynamically loaded).
 }
  .sliced_div_F{
      border-bottom: 4px solid #FFCC00;
+     display: flex;
+     align-items: center;
+     justify-content: center;
 }
 .Complete{
      color: rgb(0, 207, 21);
