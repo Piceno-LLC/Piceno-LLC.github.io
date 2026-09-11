@@ -123,6 +123,9 @@ Footer + Header = 90px total (Dynamically loaded).
      height: 35px; 
      background-color: #FFCC00;
 }
+.skill_div{
+     width: 100%
+}
  .Badges{
      padding-right: 0%;
      color: #ffffff;
