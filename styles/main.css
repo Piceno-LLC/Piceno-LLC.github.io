@@ -409,7 +409,10 @@ Footer + Header = 90px total (Dynamically loaded).
      margin-bottom: 10px;
 }
  .sliced_div_container{
-      
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     flex-direction: column;
 }
  .sliced_div_F{
      border-bottom: 4px solid #FFCC00;
