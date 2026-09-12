@@ -527,13 +527,11 @@ async function renderPDF_Downloadless(pdfData, divName) {
 
             // Keep page order.
             results
+                .filter(Boolean)
                 .sort((a, b) => a.pageNumber - b.pageNumber)
                 .forEach(result => {
-                    if (result) {
-                        pdfContainer.appendChild(result.canvas);
-                    }
-                );
-        }
+                    pdfContainer.appendChild(result.canvas);
+            });
 
         console.log(`Rendered ${totalPages} PDF page(s).`);
 
