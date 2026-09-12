@@ -674,6 +674,14 @@ Footer + Header = 90px total (Dynamically loaded).
     }
 
 /*CookieBot Div Styling*/
+#CybotCookiebotDialogPoweredbyCybot{
+     width: 0%;
+}
+#CybotCookiebotDialogPoweredbyCybot{
+     height: auto;
+     width: 100%;
+     max-height: 1000em;
+}
 .CookieDeclarationLastUpdated{
      margin: 0;
 }
