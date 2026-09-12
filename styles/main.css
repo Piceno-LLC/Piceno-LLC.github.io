@@ -674,11 +674,14 @@ Footer + Header = 90px total (Dynamically loaded).
     }
 
 /*CookieBot Div Styling*/
-#CybotCookiebotDialogPoweredbyCybot, div#CybotCookiebotDialogPoweredByText { 
-  display: none; 
-} 
-#CookiebotWidget .CookiebotWidget-body .CookiebotWidget-main-logo { 
-  display: none !important; 
+a#CybotCookiebotDialogPoweredbyCybot,
+div#CybotCookiebotDialogPoweredByText {
+  display: none;
+}
+
+/* Branding on the Privacy trigger */
+#CookiebotWidget .CookiebotWidget-body .CookiebotWidget-main-logo {
+    display: none;
 }
 #CybotCookiebotDialogPoweredbyImage{
      height: auto;
