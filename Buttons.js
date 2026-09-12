@@ -405,32 +405,42 @@ async function handleFile_Downloadless(fileUrl, insert_location) {
 
 // Handle PDF File
 function handleFile(file) {
+    if (file.type !== "application/pdf") {
+        console.error("Selected file is not a PDF.");
+        return;
+    }
+    
+    const isPdf = file.type === "application/pdf" || /\.pdf$/i.test(file.name);
+
+    if (!isPdf) {
+        console.error("Please select a PDF file.");
+        return;
+    }
     originalFileName = file.name.replace(/\.pdf$/i, '');
     const fileReader = new FileReader();
+    
     fileReader.onload = async function () {
-    try {
+        try {
             const fileData = new Uint8Array(this.result);
-    
+        
             await ensurePdfLibraries();
-    
+        
             originalPdfData = fileData;
-    
-            const progressContainer =
-                document.getElementById('progressContainer');
-    
-            const downloadBtn =
-                document.getElementById('downloadBtn');
-    
+        
+            const progressContainer = document.getElementById('progressContainer');
+        
+            const downloadBtn = document.getElementById('downloadBtn');
+        
             if (progressContainer) {
                 progressContainer.style.display = 'block';
             }
-    
+        
             if (downloadBtn) {
                 downloadBtn.style.display = 'none';
             }
-    
+        
             await renderPDF(fileData);
-    
+        
         } catch (error) {
             console.error("Error processing PDF:", error);
         }
@@ -727,17 +737,29 @@ async function renderPDF(pdfData) {
 function triggerDownload() {
     if (modifiedPdfBytes) {
         const selectedTheme = document.getElementById('themeSelector').value;
-        const themeName = themes[selectedTheme].name.toLowerCase().replace(/\s+/g, '_');
+        const themeName = themes[selectedTheme].name
+            .toLowerCase()
+            .replace(/\s+/g, '_');
+
         const blob = new Blob([modifiedPdfBytes], {
             type: 'application/pdf'
         });
+
+        // Create temporary object URL
+        const url = URL.createObjectURL(blob);
+
         const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
+        link.href = url;
         link.download = `${originalFileName}_${themeName}_dark.pdf`;
+
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
 
+        // Release the object URL after the download has started
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+
         document.getElementById('downloadBtn').style.display = 'block';
     }
 }
+
