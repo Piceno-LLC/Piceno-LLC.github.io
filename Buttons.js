@@ -308,7 +308,10 @@ function loadPdfJs() {
             resolve();
         };
 
-        script.onerror = reject;
+        script.onerror = error => {
+            pdfJsReadyPromise = null;
+            reject(error);
+        };
 
         document.head.appendChild(script);
     });
@@ -327,7 +330,10 @@ function loadPdfLib() {
         script.referrerPolicy = "no-referrer";
 
         script.onload = resolve;
-        script.onerror = reject;
+        script.onerror = error => {
+            pdfJsReadyPromise = null;
+            reject(error);
+        };
 
         document.head.appendChild(script);
     });
@@ -337,15 +343,26 @@ function loadPdfLib() {
 
 // Wait for pdfLibraries
 async function ensurePdfLibraries() {
-    await loadPdfJs();
-    await loadPdfLib();
+    await Promise.all([
+        loadPdfJs(),
+        loadPdfLib()
+    ]);
 }
 
 // Apply Theme
 function applyThemeBackground(theme) {
-    document.getElementById('PDF-Dark-Mode_DIV').style.backgroundColor = `rgb(${theme.r}, ${theme.g}, ${theme.b})`;
+    const container = document.getElementById('PDF-Dark-Mode_DIV');
+
+    if (!container || !theme) {
+        return;
+    }
+
+    container.style.backgroundColor =
+        `rgb(${theme.r}, ${theme.g}, ${theme.b})`;
 }
+
 const selector = document.getElementById('themeSelector');
+
 if (selector) {
     applyThemeBackground(themes[selector.value]);
 }
@@ -390,15 +407,35 @@ async function handleFile_Downloadless(fileUrl, insert_location) {
 function handleFile(file) {
     originalFileName = file.name.replace(/\.pdf$/i, '');
     const fileReader = new FileReader();
-    fileReader.onload = async function() {
-        const fileData = new Uint8Array(this.result);
-        await ensurePdfLibraries();
-        originalPdfData = fileData;
-        const progressContainer = document.getElementById('progressContainer');
-        progressContainer.style.display = 'block';
-        document.getElementById('downloadBtn').style.display = 'none';
-        await renderPDF(fileData);
+    fileReader.onload = async function () {
+    try {
+            const fileData = new Uint8Array(this.result);
+    
+            await ensurePdfLibraries();
+    
+            originalPdfData = fileData;
+    
+            const progressContainer =
+                document.getElementById('progressContainer');
+    
+            const downloadBtn =
+                document.getElementById('downloadBtn');
+    
+            if (progressContainer) {
+                progressContainer.style.display = 'block';
+            }
+    
+            if (downloadBtn) {
+                downloadBtn.style.display = 'none';
+            }
+    
+            await renderPDF(fileData);
+    
+        } catch (error) {
+            console.error("Error processing PDF:", error);
+        }
     };
+
     fileReader.readAsArrayBuffer(file);
 }
 
@@ -427,7 +464,6 @@ async function changeTheme() {
     const selectedTheme = document.getElementById('themeSelector').value;
     applyThemeBackground(themes[selectedTheme]);
     if (originalPdfData) {
-        await ensurePdfLibraries();
         const progressContainer = document.getElementById('progressContainer');
         progressContainer.style.display = 'block';
         document.getElementById('downloadBtn').style.display = 'none';
@@ -438,9 +474,9 @@ async function changeTheme() {
 // Handle Fild Upload Button
 async function handleFileUploadClick() {
     try {
-        await loadPdfLibraries();
+        await ensurePdfLibraries();
     } catch (e) {
-        // ignore errors
+        console.error("Unable to load PDF libraries:", e);
     }
 }
 
@@ -470,13 +506,18 @@ async function renderPDF_Downloadless(pdfData, divName) {
         const scale = 1;
 
         async function renderPage(pageNumber) {
-            if (renderId !== currentRenderId) return;
+            if (renderId !== currentRenderId) {
+                return null;
+            }
 
             const page = await pdf.getPage(pageNumber);
 
-            const viewport = page.getViewport({ scale });
+            const viewport = page.getViewport({
+                scale: scale
+            });
 
             const canvas = document.createElement("canvas");
+
             const ctx = canvas.getContext("2d", {
                 alpha: false
             });
@@ -496,20 +537,26 @@ async function renderPDF_Downloadless(pdfData, divName) {
 
             await page.render({
                 canvasContext: ctx,
-                viewport
+                viewport: viewport
             }).promise;
 
             page.cleanup();
 
             return {
-                pageNumber,
-                canvas
+                pageNumber: pageNumber,
+                canvas: canvas
             };
         }
 
-        // Render in small batches to avoid excessive memory use.
-        for (let start = 1; start <= totalPages; start += CONCURRENCY) {
-            if (renderId !== currentRenderId) return;
+        // Render pages in small batches.
+        for (
+            let start = 1;
+            start <= totalPages;
+            start += CONCURRENCY
+        ) {
+            if (renderId !== currentRenderId) {
+                return;
+            }
 
             const end = Math.min(
                 start + CONCURRENCY - 1,
@@ -523,40 +570,50 @@ async function renderPDF_Downloadless(pdfData, divName) {
                 )
             );
 
-            if (renderId !== currentRenderId) return;
+            if (renderId !== currentRenderId) {
+                return;
+            }
 
-            // Keep page order.
+            // Keep pages in their correct order.
             results
                 .filter(Boolean)
                 .sort((a, b) => a.pageNumber - b.pageNumber)
                 .forEach(result => {
                     pdfContainer.appendChild(result.canvas);
-            });
+                });
+        }
 
-        console.log(`Rendered ${totalPages} PDF page(s).`);
+        console.log(
+            `Rendered ${totalPages} PDF page(s).`
+        );
 
     } catch (error) {
-        console.error("Error rendering PDF:", error);
+        console.error(
+            "Error rendering PDF:",
+            error
+        );
     }
 }
 
 
 // Render PDF
-async function renderPDF(pdfData, divName) {
+async function renderPDF(pdfData) {
     const renderId = ++currentRenderId;
     const selectedTheme = document.getElementById('themeSelector').value;
     const theme = themes[selectedTheme];
     applyThemeBackground(theme);
     
-    await loadPdfLib();
-
-
     const pdf = await pdfjsLib.getDocument({ data: pdfData }).promise;
 
     const progressBar = document.getElementById('progressBar');
     const progressText = document.getElementById('progressText');
-    const pdfContainer = document.getElementById(divName);
+    const pdfContainer = document.getElementById('pdfContainer');
     const progressContainer = document.getElementById('progressContainer');
+    
+    if (!progressBar || !progressText || !pdfContainer || !progressContainer) {
+        console.error("Required PDF elements are missing.");
+    return;
+    }
 
     modifiedPdfBytes = null;
     progressBar.style.width = '0';
@@ -615,9 +672,16 @@ async function renderPDF(pdfData, divName) {
             pdfContainer.appendChild(canvas);
 
             // Convert canvas to PNG for PDF
-            const imgBytes = await new Promise(resolve =>
-                canvas.toBlob(blob => blob.arrayBuffer().then(resolve), 'image/png')
-            );
+            const imgBytes = await new Promise((resolve, reject) => {
+                canvas.toBlob(async blob => {
+                    if (!blob) {
+                        reject(new Error("Failed to convert canvas to PNG."));
+                        return;
+                    }
+            
+                    resolve(await blob.arrayBuffer());
+                }, 'image/png');
+            });
 
             const jpgImage = await chunkDoc.embedPng(imgBytes);
             const newPage = chunkDoc.addPage([viewport.width, viewport.height]);
