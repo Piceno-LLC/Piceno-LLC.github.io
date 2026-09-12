@@ -599,9 +599,9 @@ async function renderPDF_Downloadless(pdfData, divName) {
             const fragment = document.createDocumentFragment();
 
             results
-                .filter(Boolean)
-                .sort((a, b) => a.pageNumber - b.pageNumber)
-                results.forEach(result => {
+            .filter(Boolean)
+            .sort((a, b) => a.pageNumber - b.pageNumber)
+            .forEach(result => {
                 fragment.appendChild(result.canvas);
             });
 
