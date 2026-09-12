@@ -490,7 +490,6 @@ async function handleFileUploadClick() {
     }
 }
 
-
 async function renderPDF_Downloadless(pdfData, divName) {
     const renderId = ++currentRenderId;
 
@@ -512,7 +511,11 @@ async function renderPDF_Downloadless(pdfData, divName) {
 
         const totalPages = pdf.numPages;
 
-        const CONCURRENCY = 3;
+        // 4 is a good starting point.
+        // Try 5 or 6 on powerful desktop machines.
+        const CONCURRENCY = 4;
+
+        // Keep this at 1 for maximum speed.
         const scale = 1;
 
         async function renderPage(pageNumber) {
@@ -522,15 +525,16 @@ async function renderPDF_Downloadless(pdfData, divName) {
 
             const page = await pdf.getPage(pageNumber);
 
+            if (renderId !== currentRenderId) {
+                page.cleanup();
+                return null;
+            }
+
             const viewport = page.getViewport({
                 scale: scale
             });
 
             const canvas = document.createElement("canvas");
-
-            const ctx = canvas.getContext("2d", {
-                alpha: false
-            });
 
             canvas.width = viewport.width;
             canvas.height = viewport.height;
@@ -545,6 +549,11 @@ async function renderPDF_Downloadless(pdfData, divName) {
                 margin-right: auto;
             `;
 
+            const ctx = canvas.getContext("2d", {
+                alpha: false,
+                desynchronized: true
+            });
+
             await page.render({
                 canvasContext: ctx,
                 viewport: viewport
@@ -553,12 +562,12 @@ async function renderPDF_Downloadless(pdfData, divName) {
             page.cleanup();
 
             return {
-                pageNumber: pageNumber,
-                canvas: canvas
+                pageNumber,
+                canvas
             };
         }
 
-        // Render pages in small batches.
+        // Render pages in parallel batches.
         for (
             let start = 1;
             start <= totalPages;
@@ -576,7 +585,8 @@ async function renderPDF_Downloadless(pdfData, divName) {
             const results = await Promise.all(
                 Array.from(
                     { length: end - start + 1 },
-                    (_, index) => renderPage(start + index)
+                    (_, index) =>
+                        renderPage(start + index)
                 )
             );
 
@@ -584,13 +594,19 @@ async function renderPDF_Downloadless(pdfData, divName) {
                 return;
             }
 
-            // Keep pages in their correct order.
+            // Build a fragment first.
+            // This reduces DOM layout/reflow work.
+            const fragment = document.createDocumentFragment();
+
             results
                 .filter(Boolean)
                 .sort((a, b) => a.pageNumber - b.pageNumber)
-                .forEach(result => {
-                    pdfContainer.appendChild(result.canvas);
-                });
+                results.forEach(result => {
+                fragment.appendChild(result.canvas);
+            });
+
+            // One DOM insertion instead of one per page.
+            pdfContainer.appendChild(fragment);
         }
 
         console.log(
@@ -604,6 +620,7 @@ async function renderPDF_Downloadless(pdfData, divName) {
         );
     }
 }
+
 
 
 // Render PDF
