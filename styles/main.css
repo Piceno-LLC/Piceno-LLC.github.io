@@ -8,9 +8,6 @@ Footer + Header = 90px total (Dynamically loaded).
  ::selection {
      background: rgba(255, 232, 0, 0.322);
 }
-html, body {
-  scroll-behavior: auto !important;/*auto !important;*/
-}
  body { 
      background-color: rgba(20, 20, 0, 1);
      overflow-y: scroll;
