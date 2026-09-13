@@ -22,7 +22,7 @@ Footer + Header = 90px total (Dynamically loaded).
      color: rgb(255, 255, 255);
      margin: 0;
      padding: 0;
-     min-height: calc(100vh + 90px);
+     min-height: calc(100dvh + 90px);
      text-decoration: none;
 }
 .Inner_Sub_Page{
