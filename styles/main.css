@@ -261,8 +261,7 @@ Footer + Header = 90px total (Dynamically loaded).
      width: 100%;
 }
 .Paragraph_Image{
-     width: 350px;
-     height: 200px;
+     width: 50%;
      cursor: pointer;
      -webkit-user-drag: none;
 }
