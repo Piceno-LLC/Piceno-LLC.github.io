@@ -498,6 +498,9 @@ Footer + Header = 90px total (Dynamically loaded).
 }
 
  @media (max-width: 1200px) {
+     .Paragraph_Image{
+          width: 95%;
+     }
       .SubProduct_Logo{
            width: 10%;
       }
