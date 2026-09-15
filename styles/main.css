@@ -317,15 +317,13 @@ Footer + Header = 90px total (Dynamically loaded).
 }
  .SubProduct_Logo{
      cursor: pointer;
-     width: 40px;
-     height: 40px;
+     width: 12%;
      background-color: rgba(36, 36, 36, 0);
      -webkit-user-drag: none;
 }
 .Founder_Image_Frame{
      cursor: pointer;
-     width: 150px;
-     height: 150px;
+     width: 20%;
      -webkit-user-drag: none;
      border: 4px solid #FFCC00;
 }
@@ -500,6 +498,15 @@ Footer + Header = 90px total (Dynamically loaded).
 }
 
  @media (max-width: 1200px) {
+      .SubProduct_Logo{
+           width: 20%;
+      }
+      .Founder_Image_Frame{
+           width: 50%;
+      }
+      .Product_Logo_Large{
+           width: 50%;
+      }
       .Image_Fill{
           width: 100%;
      }
