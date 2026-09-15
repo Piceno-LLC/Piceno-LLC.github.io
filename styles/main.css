@@ -502,6 +502,9 @@ Footer + Header = 90px total (Dynamically loaded).
       .Image_Fill{
           width: 100%;
      }
+      .container_paragraph{
+           width: 96%;
+      }
      
       .Footer_Link{
            padding-left: .6rem;
