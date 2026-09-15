@@ -317,7 +317,7 @@ Footer + Header = 90px total (Dynamically loaded).
 }
  .SubProduct_Logo{
      cursor: pointer;
-     width: 12%;
+     width: 5%;
      background-color: rgba(36, 36, 36, 0);
      -webkit-user-drag: none;
 }
@@ -499,7 +499,7 @@ Footer + Header = 90px total (Dynamically loaded).
 
  @media (max-width: 1200px) {
       .SubProduct_Logo{
-           width: 20%;
+           width: 10%;
       }
       .Founder_Image_Frame{
            width: 50%;
