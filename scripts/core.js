@@ -160,7 +160,7 @@ function subpage_buttons_insert_individual() {
 
 // Scroll to top after loading content.
 function scroll_to_top(){
-    window.scrollTo(0, 0)
+    window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
 //Handle Menu Buttons' Inputs 
