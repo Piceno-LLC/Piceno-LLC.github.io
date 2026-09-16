@@ -180,7 +180,7 @@ function myFunction(typ3) {
         x.style.display = "flex";
         window.scrollTo(scrollX, scrollY);
     } else {
-        x.style.display = "flex";
+        x.style.display = "none";
     }
   }
 
