@@ -187,12 +187,13 @@ function myFunction(typ3) {
     // Open or Close Desired Menu
     if (x.style.display === "none") {
         x.style.display = "flex";
-        scroll_to_top();
     } else if (x.style.display === "flex") {
          x.style.display = "none";
     } else {
         x.style.display = "flex";
     }
+    
+    scroll_to_top();
   }
 
 //Handle Project Buttons' Inputs
@@ -212,9 +213,17 @@ function myFunctionProject(typ3) {
     // Show or Hide Desired Element
     if (x.style.display === "none") {
         x.style.display = "flex";
-        scroll_to_top();
+        
+        // Scrool to Calendar
+        let div = document.getElementById("Projects");
+        div.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+        });
+        
     } else {
         x.style.display = "none";
+        scroll_to_top();
     }
 }
 
