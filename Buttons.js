@@ -12,7 +12,7 @@ var previous_ID_Project = null;
 var previous_pic_elemID = null;
 
 // Edit scroll history:
-window.history.scrollRestoration = 'manual';
+window.history.scrollRestoration = 'auto';
 
 // Picture of the Day Prompt
 function picOfDay(elemID, description, date, url, picNumber) {
