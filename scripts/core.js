@@ -158,13 +158,14 @@ function subpage_buttons_insert_individual() {
     }
 }
 
+// Scroll to top after loading content.
+function scroll_to_top(){
+    window.scrollTo(0, 0)
+}
+
 //Handle Menu Buttons' Inputs 
 function myFunction(typ3) {
 
-    // Keeps track of scroll position before opening div.
-    const scrollX = 0;//window.scrollX;
-    const scrollY = 0;//window.scrollY;
-    
     // Hide Previous Open Menus
     if (previous_ID !== null && typ3 !== previous_ID)
     {
@@ -186,20 +187,16 @@ function myFunction(typ3) {
     // Open or Close Desired Menu
     if (x.style.display === "none") {
         x.style.display = "flex";
-        window.scrollTo(scrollX, scrollY);
+        scroll_to_top();
     } else if (x.style.display === "flex") {
          x.style.display = "none";
     } else {
-        x.style.display = "none";
+        x.style.display = "flex";
     }
   }
 
 //Handle Project Buttons' Inputs
 function myFunctionProject(typ3) {
-    
-    // Keeps track of scroll position before opening div.
-    const scrollX = 0;//window.scrollX;
-    const scrollY = 0;//window.scrollY;
 
     // Hide Previous Project
     if (previous_ID_Project !== null && typ3 !== previous_ID_Project)
@@ -215,7 +212,7 @@ function myFunctionProject(typ3) {
     // Show or Hide Desired Element
     if (x.style.display === "none") {
         x.style.display = "flex";
-        window.scrollTo(scrollX, scrollY);
+        scroll_to_top();
     } else {
         x.style.display = "none";
     }
@@ -229,11 +226,6 @@ function myFunctionTopClose(typ3) {
         window.scrollTo({top: 0, behavior: 'smooth'});
         document.getElementById(typ3).style.display = "none";
     }
-}
-
-// Scroll to top after loading content.
-function scroll_to_top(){
-    window.scrollTo(0, 0)
 }
 
 // Run Functions
