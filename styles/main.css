@@ -443,7 +443,7 @@ Footer + Header = 90px total (Dynamically loaded).
      width: 100%;
 }
  .PDF_Embed{
-     width: 90%;
+     width: 60%;
      /*height: 800px;*/
      margin-bottom: 10px;
 }
