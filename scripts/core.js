@@ -154,8 +154,8 @@ function subpage_buttons_insert_individual() {
 function myFunction(typ3) {
 
     // Keeps track of scroll position before opening div.
-    const scrollX = window.scrollX;
-    const scrollY = window.scrollY;
+    const scrollX = 0;//window.scrollX;
+    const scrollY = 0;//window.scrollY;
     
     // Hide Previous Open Menus
     if (previous_ID !== null && typ3 !== previous_ID)
@@ -188,8 +188,8 @@ function myFunction(typ3) {
 function myFunctionProject(typ3) {
     
     // Keeps track of scroll position before opening div.
-    const scrollX = window.scrollX;
-    const scrollY = window.scrollY;
+    const scrollX = 0;//window.scrollX;
+    const scrollY = 0;//window.scrollY;
 
     // Hide Previous Project
     if (previous_ID_Project !== null && typ3 !== previous_ID_Project)
