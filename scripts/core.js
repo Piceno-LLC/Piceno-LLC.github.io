@@ -1,12 +1,12 @@
 /*
 
-    Copyright Piceno LLC. All rights reserved.
-    Programmers {
-        Mario Aguilera Piceno - Founder
-    }
-    File: core.js
-    Created: 02/20/2023
-    Last Modified: 09/16/2026
+Copyright Piceno LLC. All rights reserved.
+Programmers {
+    Mario Aguilera Piceno - Founder
+}
+File: core.js
+Created: 02/20/2023
+Last Modified: 09/16/2026
     
 */
 
