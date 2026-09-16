@@ -7,7 +7,7 @@ Programmers {
 File: core.js
 Created: 02/20/2023
 Last Modified: 09/16/2026
-About: Handles main website functions.
+About: Handles Piceno's website functionality.
     
 */
 
