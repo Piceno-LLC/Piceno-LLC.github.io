@@ -625,24 +625,6 @@ Footer + Header = 90px total (Dynamically loaded).
      background-color: #FFCC00;
      margin-bottom: 5px;
 }
-/* The typing effect */
- @keyframes typing {
-     from {
-         width: 0ch 
-    }
-     to {
-         width: 40ch 
-    }
-}
-/* The typewriter cursor effect */
- @keyframes blink-caret {
-     from, to {
-         border-color: transparent 
-    }
-     50% {
-         border-color: #ffffff;
-    }
-}
 /* Keeps the image on top of the background animations */
  .landing_logo img {
      position: relative;
@@ -756,6 +738,4 @@ div#CybotCookiebotDialogPoweredByText {
 }
 .CookieDeclarationChangeConsentDoNotSell{
      margin: 0;
-}
-
 }
