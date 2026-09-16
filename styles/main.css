@@ -671,8 +671,7 @@ Footer + Header = 90px total (Dynamically loaded).
     }
 
 /*CookieBot Div Styling*/
-a#CybotCookiebotDialogPoweredbyCybot,
-div#CybotCookiebotDialogPoweredByText {
+a#CybotCookiebotDialogPoweredbyCybot, div#CybotCookiebotDialogPoweredByText {
   display: none;
 }
 
