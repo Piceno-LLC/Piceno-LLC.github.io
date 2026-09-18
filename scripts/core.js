@@ -24,7 +24,7 @@ window.history.scrollRestoration = 'auto';
 
 // Back Button
 function goBack() {
-    if (window.history.length >= 2) {
+    if (window.history.length > 2) {
         window.history.back();
     } else {
         window.location.href = "https://www.piceno.dev";
