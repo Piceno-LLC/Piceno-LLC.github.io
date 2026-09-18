@@ -24,10 +24,10 @@ window.history.scrollRestoration = 'auto';
 
 // Back Button
 function goBack() {
-    if (window.history.length > 1) {
-        window.history.back(); // Go back normally
+    if (window.history.length >= 2) {
+        window.history.back();
     } else {
-        window.location.href = "https://www.piceno.dev"; // Redirect to main site
+        window.location.href = "https://www.piceno.dev";
     }
 }
 
