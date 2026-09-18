@@ -22,6 +22,15 @@ var previous_pic_elemID = null;
 // Edit scroll history:
 window.history.scrollRestoration = 'auto';
 
+// Back Button
+function goBack() {
+    if (window.history.length > 1) {
+        window.history.back(); // Go back normally
+    } else {
+        window.location.href = "https://www.piceno.dev"; // Redirect to main site
+    }
+}
+
 // Picture of the Day Prompt
 function picOfDay(elemID, description, date, url, picNumber) {
 
