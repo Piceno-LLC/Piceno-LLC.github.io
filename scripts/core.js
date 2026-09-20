@@ -42,7 +42,6 @@ function openMobileNav() {
         x.style.display = "flex";
     } else if (x.style.display === "flex") {
          x.style.display = "none";
-         x.style.display = '';
     } else {
         x.style.display = "flex";
     }
