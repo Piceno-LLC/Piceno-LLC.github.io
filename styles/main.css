@@ -55,7 +55,7 @@ Footer + Header = 90px total (Dynamically loaded).
      outline: none;
      cursor: pointer;
      border-radius: 2px;
-     text-align: center;
+     text-align: right;
      font-size: 18px;
 }
 .header_div_rows{
