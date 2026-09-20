@@ -530,8 +530,8 @@ Footer + Header = 90px total (Dynamically loaded).
 }
 
  @media (max-width: 1200px) {
-      .Top_Header{
-           width: 100vw;
+      .Top_Header_Container{
+           width: 100%;
       }
      .Paragraph_Image{
           width: 95%;
