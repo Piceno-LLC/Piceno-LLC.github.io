@@ -36,10 +36,18 @@ function openMobileNav() {
     
     // Obtain Desired Menu
     var x = document.getElementById("Vertical_Nav_Menu_Insert");
+    const button = document.getElementById("nav_menu_button");
 
     // Open or Close Desired Menu
     if (x !== null) {
-        x.classList.toggle('is-active');
+        
+        const active = x.classList.toggle('is-active');
+
+        if (active) {
+            button.src = 'https://www.piceno.dev/images/nav-bars-close.png';
+        } else {
+            button.src = 'https://www.piceno.dev/images/nav-bars.png';
+        }
     }
 }
 
