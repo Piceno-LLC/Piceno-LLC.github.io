@@ -45,8 +45,12 @@ function openMobileNav() {
 
         if (active) {
             button.src = 'https://www.piceno.dev/images/nav-bars-close.png';
+            button.setAttribute('aria-expanded', 'true');
+            button.setAttribute('aria-label', 'Close menu');
         } else {
             button.src = 'https://www.piceno.dev/images/nav-bars.png';
+            button.setAttribute('aria-expanded', 'false');
+            button.setAttribute('aria-label', 'Open menu');
         }
     }
 }
