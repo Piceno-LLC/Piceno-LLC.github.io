@@ -553,7 +553,7 @@ Footer + Header = 90px total (Dynamically loaded).
            display: none;
       }
      #Vertical_Nav_Menu_Insert.is-active{
-          display: none;
+          display: flex;
      }
       /*Mobile Navigation End*/
       .Top_Header_Container{
