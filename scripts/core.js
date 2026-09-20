@@ -103,6 +103,7 @@ function innerPage(pageName) {
     }
 }
 
+// Insert Vertical Menu Navigation Buttons
 function vertical_menu_insert() {
     // Check Page; Insert HTML data if page exists
     if (document.getElementById("Vertical_Nav_Menu_Insert") !== null) {
@@ -282,6 +283,7 @@ document.addEventListener('DOMContentLoaded', function() {
     footer_insert();
     subpage_buttons_insert();
     subpage_buttons_insert_individual();
+    vertical_menu_insert();
     //innerPage("PDF-Dark-Mode");
     scroll_to_top();
 });
