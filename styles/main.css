@@ -48,12 +48,13 @@ Footer + Header = 90px total (Dynamically loaded).
      align-items: center;
      height: 100px;
 }
-.news_title_preview_dix{
+.news_title_preview_div{
      width: 75%;
      height: 100%;
      display: flex;
      flex: 0 0 50%;
      align-items: center;
+     justify-content: center;
 }
 .Central_Background{
      position: fixed; 
