@@ -534,6 +534,12 @@ Footer + Header = 90px total (Dynamically loaded).
 }
 
  @media (max-width: 1200px) {
+      /*Mobile Navigation Start*/
+      .nav_menu_button{
+          display: flex;
+      }
+      
+      /*Mobile Navigation End*/
       .Top_Header_Container{
            width: 100%;
       }
