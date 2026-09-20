@@ -409,7 +409,9 @@ Footer + Header = 90px total (Dynamically loaded).
 }
  .Top_Header{
      background-color: rgba(0, 0, 0, 1);
-     width: 100%;
+     justify-content: left;
+     display: flex;
+     width: 80vw;
      height: 45px;
      /*height: 45px;*/
 }
@@ -498,6 +500,9 @@ Footer + Header = 90px total (Dynamically loaded).
 }
 
  @media (max-width: 1200px) {
+      .Top_Header{
+           width: 100vw;
+      }
      .Paragraph_Image{
           width: 95%;
      }
