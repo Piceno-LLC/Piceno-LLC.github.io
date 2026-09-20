@@ -409,7 +409,7 @@ Footer + Header = 90px total (Dynamically loaded).
 }
  .Top_Header{
      background-color: rgba(0, 0, 0, 1);
-     justify-content: left;
+     justify-content: center;
      display: flex;
      width: 80vw;
      height: 45px;
