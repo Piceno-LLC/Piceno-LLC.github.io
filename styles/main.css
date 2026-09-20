@@ -540,7 +540,7 @@ Footer + Header = 90px total (Dynamically loaded).
      text-decoration: none;
 }
 #nav_misc{
-     display: flex;
+     display: block;
 }
  @media (max-width: 1200px) {
       /*Mobile Navigation Start*/
