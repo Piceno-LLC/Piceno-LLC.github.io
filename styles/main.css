@@ -415,6 +415,10 @@ Footer + Header = 90px total (Dynamically loaded).
      height: 45px;
      /*height: 45px;*/
 }
+.Top_Header_Navigation_div{
+     width: 90%;
+     height: 95%;
+}
  .top_header_logo{
      -webkit-user-drag: none;
      width: 190px;
