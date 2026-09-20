@@ -6,7 +6,7 @@ Programmers {
 }
 File: core.js
 Created: 02/20/2023
-Last Modified: 09/16/2026
+Last Modified: 09/20/2026
 About: Handles Piceno's website functionality.
     
 */
@@ -97,7 +97,7 @@ function footer_insert() {
     const div_ID = "Footer_Insert";
     if (document.getElementById(div_ID) !== null) {
         let careerTextArea = document.getElementById(div_ID);
-        fetch("https://www.piceno.dev/content/insert/footer/index.html")
+        fetch("https://www.piceno.dev/dynamic-html/footer/index.html")
         .then(response => response.text())
         .then(html => {
             careerTextArea.innerHTML = html;
@@ -116,7 +116,7 @@ function header_insert() {
     const div_ID = "Header_Insert";
     if (document.getElementById(div_ID) !== null) {
         let careerTextArea = document.getElementById(div_ID);
-        fetch("https://www.piceno.dev/content/insert/header/index.html")
+        fetch("https://www.piceno.dev/dynamic-html/header/index.html")
         .then(response => response.text())
         .then(html => {
             careerTextArea.innerHTML = html;
@@ -135,7 +135,7 @@ function subpage_buttons_insert() {
     const div_ID = "Button_Projects_Container_SubPage";
     if (document.getElementById(div_ID) !== null) {
         let careerTextArea = document.getElementById(div_ID);
-        fetch("https://www.piceno.dev/content/insert/subpage-buttons/index.html")
+        fetch("https://www.piceno.dev/dynamic-html/subpage-buttons/index.html")
         .then(response => response.text())
         .then(html => {
             careerTextArea.innerHTML = html;
@@ -154,7 +154,7 @@ function subpage_buttons_insert_individual() {
     const div_ID = "Button_Projects_Container_SubPage_Mario";
     if (document.getElementById(div_ID) !== null) {
         let careerTextArea = document.getElementById(div_ID);
-        fetch("https://www.piceno.dev/content/insert/subpage-buttons-mario/index.html")
+        fetch("https://www.piceno.dev/dynamic-html/subpage-buttons-mario/index.html")
         .then(response => response.text())
         .then(html => {
             careerTextArea.innerHTML = html;
