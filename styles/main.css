@@ -42,7 +42,7 @@ Footer + Header = 90px total (Dynamically loaded).
      justify-content: center;
 }
 .news_container{
-     width: 70%;
+     width: 100%;
      display: flex;
      align-items: center;
      height: 100px;
