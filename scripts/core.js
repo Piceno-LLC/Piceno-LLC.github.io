@@ -2,7 +2,7 @@
 
 Copyright Piceno LLC. All rights reserved.
 Programmers {
-    Mario Aguilera Piceno - Founder
+    1. Mario Aguilera Piceno - Founder
 }
 File: core.js
 Created: 02/20/2023
