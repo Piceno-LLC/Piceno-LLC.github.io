@@ -31,6 +31,10 @@ Footer + Header = 90px total (Dynamically loaded).
 #Vertical_Nav_Menu_Insert{
      display: none;
 }
+.Vertical_Nav_Menu{
+     width: 100%;
+     height: 100%;
+}
 .Central_Background{
      position: fixed; 
      z-index: -1; 
