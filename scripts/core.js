@@ -31,6 +31,11 @@ function goBack() {
     }
 }
 
+// Open Mobile Navigation Menu
+function openMobileNav() {
+    
+}
+
 // Picture of the Month Prompt
 function picOfDay(elemID, description, date, url, picNumber) {
 
