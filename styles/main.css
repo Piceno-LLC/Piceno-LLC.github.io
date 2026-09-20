@@ -58,6 +58,12 @@ Footer + Header = 90px total (Dynamically loaded).
      justify-content: center;
      background-color: rgba(0, 0, 0, .5);
 }
+.news_title{
+     height: 100%;
+     text-align: center;
+     vertical-align: middle;
+     align-content: center;
+}
 .Central_Background{
      position: fixed; 
      z-index: -1; 
