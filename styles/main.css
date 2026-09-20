@@ -45,7 +45,7 @@ Footer + Header = 90px total (Dynamically loaded).
      text-align: center;
      margin: ;
 }
- .Button_Projects_Container{
+.Button_Projects_Container{
      display: flex;
      gap: 30px;
      flex-direction: row;
@@ -56,6 +56,31 @@ Footer + Header = 90px total (Dynamically loaded).
      margin-top: 10px;
      margin-bottom: 15px;
      width: 60%;
+}
+ .Button_Projects_Container_header{
+     display: flex;
+     gap: 3px;
+     flex-direction: column;
+     align-items: center;
+     justify-content: right;
+     flex-wrap: wrap;
+}
+.Button_Projects_header{
+     color: #000000;
+     background-color: #FFCC00;
+     border-color: #FFCC20;
+     outline: none;
+     cursor: pointer;
+     border-radius: 2px;
+     text-align: center;
+     font-size: 18px;
+     width: 25%;
+     height: 30px;
+     /* word-break: break-all; */
+     overflow-wrap: break-word;
+     max-width: 100%;
+     box-sizing: border-box;
+     overflow: hidden;
 }
 .Button_Projects_Container_SubPage{
      display: flex;
