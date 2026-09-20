@@ -34,6 +34,17 @@ function goBack() {
 // Open Mobile Navigation Menu
 function openMobileNav() {
     
+    // Obtain Desired Menu
+    var x = document.getElementById("Vertical_Nav_Menu_Insert");
+
+    // Open or Close Desired Menu
+    if (x.style.display === "none") {
+        x.style.display = "flex";
+    } else if (x.style.display === "flex") {
+         x.style.display = "none";
+    } else {
+        x.style.display = "flex";
+    }
 }
 
 // Picture of the Month Prompt
