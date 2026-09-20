@@ -103,6 +103,23 @@ function innerPage(pageName) {
     }
 }
 
+function vertical_menu_insert() {
+    // Check Page; Insert HTML data if page exists
+    if (document.getElementById("Vertical_Nav_Menu_Insert") !== null) {
+        let careerTextArea = document.getElementById("Vertical_Nav_Menu_Insert");
+        fetch("https://www.piceno.dev/dynamic-html/header-vertical/index.html")
+        .then(response => response.text())
+        .then(html => {
+            careerTextArea.innerHTML = html;
+        })
+        .catch(error => {
+            console.error("Error loading page:", error);
+        });
+    } else {
+        console.log("Did not fetch: " + div_ID);
+    }
+}
+
 // Insert Footer
 function footer_insert() {
     // Check Page; Insert HTML data if page exists
