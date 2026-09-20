@@ -450,8 +450,6 @@ Footer + Header = 90px total (Dynamically loaded).
      flex: 0 0 50%;
      max-width: 50%;
      text-align: right;
-     margin-bottom: 15px;
-     margin-top: 15px;
 }
  .top_header_logo{
      -webkit-user-drag: none;
