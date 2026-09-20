@@ -66,9 +66,10 @@ Footer + Header = 90px total (Dynamically loaded).
      border-right: 4px solid #000000;
 }
 .news_image_preview_div{
-     width: 25%;
      display: flex;
      flex: 0 0 50%;
+     width: 25%;
+     height: 100%;
 }
 .Button_Projects_Vertical{
      width: 100%;
