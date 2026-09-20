@@ -45,6 +45,9 @@ Footer + Header = 90px total (Dynamically loaded).
      text-align: center;
      margin: ;
 }
+.nav_menu_button{
+     height: 100%;
+}
 .Button_Projects_Container{
      display: flex;
      gap: 30px;
