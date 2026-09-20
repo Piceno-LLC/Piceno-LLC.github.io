@@ -432,17 +432,18 @@ Footer + Header = 90px total (Dynamically loaded).
      height: 95%;
      justify-content: center;
      display: flex;
+     align-items: center;
 }
 .header_div_column{
      flex: 0 0 50%;
      max-width: 50%;
      display: flex;
      align-items: center;
+     height: 100%;
 }
  .top_header_logo{
      -webkit-user-drag: none;
-     width: 190px;
-     height: 45px;
+     height: 100%;
      float: none;
      cursor: pointer;
 }
