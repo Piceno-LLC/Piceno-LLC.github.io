@@ -28,17 +28,14 @@ Footer + Header = 90px total (Dynamically loaded).
 .Inner_Sub_Page{
      width: 100%;
 }
-#Vertical_Nav_Menu_Insert{
-     display: none;
-}
 .Vertical_Nav_Menu{
-     display: flex;
      background-color: rgb(0, 0, 0);
      width: 50%;
      height: 100%;
      position: fixed;
      top: 40px;
      right: 0;
+     display: none;
 }
 .Central_Background{
      position: fixed; 
@@ -555,7 +552,7 @@ Footer + Header = 90px total (Dynamically loaded).
       #nav_misc{
            display: none;
       }
-      #Vertical_Nav_Menu_Insert{
+      .Vertical_Nav_Menu{
           display: none;
      }
       /*Mobile Navigation End*/
