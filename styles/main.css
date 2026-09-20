@@ -38,7 +38,7 @@ Footer + Header = 90px total (Dynamically loaded).
      display: none;
 }
 #Vertical_Nav_Menu_Insert{
-     display: none;
+     display: none !important;
 }
 .Central_Background{
      position: fixed; 
@@ -550,13 +550,13 @@ Footer + Header = 90px total (Dynamically loaded).
  @media (max-width: 1200px) {
       /*Mobile Navigation Start*/
       .nav_menu_button{
-          display: flex;
+          display: flex !important;
       }
       #nav_misc{
-           display: none;
+           display: none !important;
       }
      #Vertical_Nav_Menu_Insert{
-          display: none;
+          display: none !important;
      }
       /*Mobile Navigation End*/
       .Top_Header_Container{
