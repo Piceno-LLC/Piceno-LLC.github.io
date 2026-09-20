@@ -31,7 +31,7 @@ function goBack() {
     }
 }
 
-// Picture of the Day Prompt
+// Picture of the Month Prompt
 function picOfDay(elemID, description, date, url, picNumber) {
 
     // Open or Close
