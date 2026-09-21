@@ -517,7 +517,7 @@ Footer + Header = 90px total (Dynamically loaded).
      margin-top: 2px;
 }
 .Top_Header_Navigation_div{
-     width: 98%;
+     width: 100%;
      height: 95%;
      justify-content: center;
      display: flex;
@@ -631,7 +631,10 @@ Footer + Header = 90px total (Dynamically loaded).
      #Vertical_Nav_Menu_Insert.is-active{
           display: flex;
      }
-      /*Mobile Navigation End*/
+     /*Mobile Navigation End*/
+     .Top_Header_Navigation_div{
+          width: 98%;
+     }
      #header_logo_div{
           justify-content: right;
           display: flex;
