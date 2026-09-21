@@ -525,7 +525,9 @@ Footer + Header = 90px total (Dynamically loaded).
      height: 100%;
 }
 #header_logo_div{
-     justify-content: left;
+     justify-content: center;
+     position: absolute;
+     display: none;
 }
  .top_header_logo{
      -webkit-user-drag: none;
@@ -626,6 +628,7 @@ Footer + Header = 90px total (Dynamically loaded).
       /*Mobile Navigation End*/
      #header_logo_div{
           justify-content: right;
+          display: flex;
      }
       .Top_Header_Container{
            width: 100%;
