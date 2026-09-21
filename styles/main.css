@@ -511,6 +511,7 @@ Footer + Header = 90px total (Dynamically loaded).
      display: flex;
      width: 80vw;
      height: 45px;
+     align-items: center;
 }
 .Top_Header_Navigation_div{
      width: 98%;
