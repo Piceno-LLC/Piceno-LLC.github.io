@@ -47,7 +47,8 @@ Footer + Header = 90px total (Dynamically loaded).
      align-items: center;
      height: 100px;
      cursor: pointer;
-     border: solid 1px #ffffff;
+     border-top: solid 1px #ffffff;
+     border-bottom: solid 1px #ffffff;
 }
 .news_title_preview_div{
      width: 75%;
