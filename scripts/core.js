@@ -296,7 +296,7 @@ document.addEventListener('DOMContentLoaded', function() {
     subpage_buttons_insert();
     subpage_buttons_insert_individual();
     vertical_menu_insert();
-    //innerPage("PDF-Dark-Mode");
+    innerPage("pdf-dark-mode-app");
     scroll_to_top();
 });
 
