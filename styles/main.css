@@ -764,7 +764,6 @@ Footer + Header = 90px total (Dynamically loaded).
      background-color: #FFCC00;
      margin-bottom: 5px;
 }
-
 .CookiebotCookieConsentBtn, 
 #CookiebotWidget, 
 #CybotCookiebotDialogBodyButtonRevokable {
@@ -772,6 +771,10 @@ Footer + Header = 90px total (Dynamically loaded).
     visibility: hidden !important;
     opacity: 0 !important;
     pointer-events: none !important;
+}
+#CybotCookiebotDialogPoweredbyCybot, 
+#CybotCookiebotDialogPoweredByText { 
+    display: none !important; 
 }
 
 /* Keeps the image on top of the background animations */
