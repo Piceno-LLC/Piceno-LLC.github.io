@@ -764,6 +764,16 @@ Footer + Header = 90px total (Dynamically loaded).
      background-color: #FFCC00;
      margin-bottom: 5px;
 }
+
+.CookiebotCookieConsentBtn, 
+#CookiebotWidget, 
+#CybotCookiebotDialogBodyButtonRevokable {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
 /* Keeps the image on top of the background animations */
  .landing_logo img {
      position: relative;
@@ -810,6 +820,7 @@ Footer + Header = 90px total (Dynamically loaded).
     }
 
 /*CookieBot Div Styling*/
+
  #CybotCookiebotDialogBodyButtonRevokable { 
      display: none !important; 
 }
